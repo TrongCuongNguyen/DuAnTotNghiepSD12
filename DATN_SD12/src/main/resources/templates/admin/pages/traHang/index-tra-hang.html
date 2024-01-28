@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Return Requests</title>
+    <style>
+        .badges {
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .bg-lightorange {
+            background-color: #FA0043; /* Màu cam nhạt */
+            color: #fff; /* Màu chữ trắng */
+        }
+
+        .bg-lightblue {
+            background-color: #0dcaf0; /* Màu xanh nhạt */
+            color: #fff; /* Màu chữ đen */
+        }
+
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="content">
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Return Requests</h4>
+                <h6>View/Search for return requests</h6>
+            </div>
+            <div class="page-btn">
+                <!-- Add any specific buttons or links for return requests page -->
+            </div>
+        </div>
+
+        <!-- Add any specific messages or alerts for return requests page -->
+
+        <div class="card">
+            <div class="card-body">
+                <div class="table-top">
+                    <div class="search-set">
+                        <div class="search-path">
+                            <a class="btn btn-filter" id="filter_search"></a>
+                        </div>
+                        <form>
+                            <div class="search-input">
+                                <a class="btn btn-searchset"></a>
+                                <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                    <label>
+                                        <input type="search" class="form-control form-control-sm"
+                                               placeholder="Search..."
+                                               aria-controls="DataTables_Table_0">
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="wordset">
+                        <ul>
+                            <li>
+                                <a data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                   data-bs-original-title="pdf" aria-label="pdf"></a>
+                            </li>
+                            <li>
+                                <a data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                   data-bs-original-title="excel" aria-label="excel"></a>
+                            </li>
+                            <li>
+                                <a data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                   data-bs-original-title="print" aria-label="print"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Add any specific filters or dropdowns for return requests page -->
+
+                <div class="card" id="filter_inputs">
+                    <div class="card-body pb-0">
+                        <div class="row">
+                            <!-- Add specific filters or dropdowns here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                        <table class="table datanew dataTable no-footer" id="DataTables_Table_0" role="grid"
+                               aria-describedby="DataTables_Table_0_info">
+                            <thead>
+                            <tr role="row">
+                                <!-- Define columns headers as needed -->
+                                <th>Tên Khách Hàng</th>
+                                <th>Ngày Đặt</th>
+                                <th>Địa Chỉ</th>
+                                <th>Tổng Tiền</th>
+                                <th>Trạng Thái Trả hàng</th>
+                                                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="odd" th:each="danhSachTraHang : ${traHangList}">
+                                <td th:text="${danhSachTraHang.khachHang.hoVaTen}"></td>
+                                <td th:text="${danhSachTraHang.ngayDat}"></td>
+                                <td th:if="${danhSachTraHang.diaChi != null}" th:text="${danhSachTraHang.diaChi}">[Không
+                                    có dữ liệu]
+                                </td>
+                                <td th:text="${danhSachTraHang.tongTien}"></td>
+
+                                <td>
+                                  <span th:switch="${danhSachTraHang.trangThaiTraHang}">
+
+                                      <span th:case="0"
+                                            class="badges bg-lightgreen">Không / Chưa yêu cầu trả hàng</span>
+                                      <span th:case="1" class="badges bg-lightorange">Yêu cầu trả hàng</span>
+                                      <span th:case="2"
+                                            class="badges bg-lightblue">Đang xử lý và xác nhận trả hàng</span>
+                                      <span th:case="3" class="badges bg-lightyellow">Hoàn tất trả hàng</span>
+                                      <span th:case="4" class="badges bg-lightred">Từ chối yêu cầu trả hàng</span>
+                                      <span th:case="*" class="badges bg-lightblack">Trạng thái không hợp lệ</span>
+                                  </span>
+                                </td>
+
+
+                                <td th:style="${danhSachTraHang.trangThaiTraHang != 1 and danhSachTraHang.trangThaiTraHang != 2 ? 'display: none;' : ''}">
+                                    <a th:data-id="${danhSachTraHang.id}" onclick="showConfigModalDialog(this.getAttribute('data-id'))" type="button" data-toggle="tooltip"> Đồng Ý ✔</a>
+
+                                    <a th:data-id="${danhSachTraHang.id}" onclick="showConfirmTuChoi(this.getAttribute('data-id'))" type="button" data-toggle="tooltip"> Từ chối ☠</a>
+                                </td>
+
+
+
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- JavaScript for modal and any additional functionalities -->
+                        <script>
+                            function showConfigModalDialog(id, name) {
+                                $('#name').text(name);
+                                console.assert("Đã Xác Nhận! ")
+                                $('#yesOption').attr('href', '/admin/traHang/xacNhan/' + id);
+                                $('#configmationId').modal('show');
+                            }
+
+                            function showConfirmTuChoi(id, name) {
+                                $('#name').text(name);
+                                console.assert("Đã Xác Nhận! ")
+                                $('#yesOption').attr('href', '/admin/traHang/tuChoi/' + id);
+                                $('#configmationId').modal('show');
+                            }
+
+                            function cancel() {
+                                $('#configmationId').modal('hide'); // Đóng modal
+                            }
+                        </script>
+
+                        <!-- Modal delete -->
+                        <div class="modal" tabindex="-1" role="dialog" id="configmationId">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" style="color: black">Xác nhận</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span onclick="cancel()">x</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p style="color: black">Xác Nhận Thao tác! </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a id="yesOption" type="button" class="btn btn-primary">Có</a>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                                onclick="cancel()">Không
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

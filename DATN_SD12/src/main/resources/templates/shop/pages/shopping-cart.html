@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{shop/layout/layout}">
+<head>
+
+   <title>Shopping Cart</title>
+
+   <!--   <link th:href="@{static/assets/css/styles.css}" rel="stylesheet">-->
+</head>
+<body>
+<div layout:fragment="content">
+   <!-- ======================= Top Breadcrubms ======================== -->
+   <div class="gray py-3">
+      <div class="container">
+         <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+               <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                     <li class="breadcrumb-item"><a href="#">Home</a></li>
+                     <!--                     <li class="breadcrumb-item"><a href="#">Support</a></li>-->
+                     <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+                  </ol>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- ======================= Top Breadcrubms ======================== -->
+
+   <!-- ======================= Product Detail ======================== -->
+   <section class="middle">
+      <div class="container">
+
+         <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+               <div class="d-block mb-3">
+                  <h3>Shopping Cart</h3>
+               </div>
+            </div>
+         </div>
+         <!-- Render by JS -->
+         <div class="row justify-content-between shopping_cart_container">
+
+         </div>
+         <!--Shopping Cart Container Template-->
+         <!--         <div th:fragment="~{shop/custom/shopping-cart-2::shopping_cart_template_2}"></div>-->
+         <!--Shopping Cart Container Controller-->
+         <!--         <div th:fragment="~{shop/custom/shopping-cart-2::shopping_cart_controller_2}"></div>-->
+      </div>
+   </section>
+   <!-- ======================= Product Detail End ======================== -->
+
+</div>
+
+</body>
+
+</html>

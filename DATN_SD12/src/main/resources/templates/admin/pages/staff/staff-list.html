@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/layout}">
+<head>
+   <meta charset="UTF-8">
+   <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+   <div class="content">
+      <div class="page-header">
+         <div class="page-title">
+            <h4>User List</h4>
+            <h6>Manage your User</h6>
+         </div>
+         <div class="page-btn">
+            <a href="newuser.html" class="btn btn-added"><img src="assets/img/icons/plus.svg" alt="img">Add User</a>
+         </div>
+      </div>
+
+      <div class="card">
+         <div class="card-body">
+            <div class="table-top">
+               <div class="search-set">
+                  <div class="search-path">
+                     <a class="btn btn-filter" id="filter_search">
+                        <img src="assets/img/icons/filter.svg" alt="img">
+                        <span><img src="assets/img/icons/closes.svg" alt="img"></span>
+                     </a>
+                  </div>
+                  <div class="search-input">
+                     <a class="btn btn-searchset"><img src="assets/img/icons/search-white.svg" alt="img"></a>
+                     <div id="DataTables_Table_0_filter" class="dataTables_filter"><label> <input type="search"
+                                                                                                  class="form-control form-control-sm"
+                                                                                                  placeholder="Search..."
+                                                                                                  aria-controls="DataTables_Table_0"></label>
+                     </div>
+                  </div>
+               </div>
+               <div class="wordset">
+                  <ul>
+                     <li>
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="pdf"
+                           aria-label="pdf"><img src="assets/img/icons/pdf.svg" alt="img"></a>
+                     </li>
+                     <li>
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="excel"
+                           aria-label="excel"><img src="assets/img/icons/excel.svg" alt="img"></a>
+                     </li>
+                     <li>
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="print"
+                           aria-label="print"><img src="assets/img/icons/printer.svg" alt="img"></a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+
+            <div class="card" id="filter_inputs">
+               <div class="card-body pb-0">
+                  <div class="row">
+                     <div class="col-lg-2 col-sm-6 col-12">
+                        <div class="form-group">
+                           <input type="text" placeholder="Enter User Name">
+                        </div>
+                     </div>
+                     <div class="col-lg-2 col-sm-6 col-12">
+                        <div class="form-group">
+                           <input type="text" placeholder="Enter Phone">
+                        </div>
+                     </div>
+                     <div class="col-lg-2 col-sm-6 col-12">
+                        <div class="form-group">
+                           <input type="text" placeholder="Enter Email">
+                        </div>
+                     </div>
+                     <div class="col-lg-2 col-sm-6 col-12">
+                        <div class="form-group">
+                           <input type="text" class="datetimepicker cal-icon" placeholder="Choose Date">
+                        </div>
+                     </div>
+                     <div class="col-lg-2 col-sm-6 col-12">
+                        <div class="form-group">
+                           <select class="select select2-hidden-accessible" data-select2-id="1" tabindex="-1"
+                                   aria-hidden="true">
+                              <option data-select2-id="3">Disable</option>
+                              <option>Enable</option>
+                           </select><span class="select2 select2-container select2-container--default" dir="ltr"
+                                          data-select2-id="2" style="width: 100%;"><span class="selection"><span
+                              class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true"
+                              aria-expanded="false" tabindex="0" aria-disabled="false"
+                              aria-labelledby="select2-jxrk-container"><span class="select2-selection__rendered"
+                                                                             id="select2-jxrk-container" role="textbox"
+                                                                             aria-readonly="true" title="Disable">Disable</span><span
+                              class="select2-selection__arrow" role="presentation"><b
+                              role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+                                                                                 aria-hidden="true"></span></span>
+                        </div>
+                     </div>
+                     <div class="col-lg-1 col-sm-6 col-12 ms-auto">
+                        <div class="form-group">
+                           <a class="btn btn-filters ms-auto"><img src="assets/img/icons/search-whites.svg"
+                                                                   alt="img"></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="table-responsive">
+               <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                  <table class="table datanew dataTable no-footer" id="DataTables_Table_0" role="grid"
+                         aria-describedby="DataTables_Table_0_info">
+                     <thead>
+                     <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                            aria-sort="ascending" aria-label="
+
+
+
+
+: activate to sort column descending" style="width: 59.775px;">
+                           <label class="checkboxs">
+                              <input type="checkbox">
+                              <span class="checkmarks"></span>
+                           </label>
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                            aria-label="User name : activate to sort column ascending" style="width: 111.925px;">User
+                           name
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                            aria-label="Phone: activate to sort column ascending" style="width: 120.713px;">Phone
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                            aria-label="email: activate to sort column ascending" style="width: 129.887px;">email
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                            aria-label="Role: activate to sort column ascending" style="width: 117.725px;">Role
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                            aria-label="Created On: activate to sort column ascending" style="width: 110.425px;">Created
+                           On
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                            aria-label="Status: activate to sort column ascending" style="width: 93.0375px;">Status
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                            aria-label="Action: activate to sort column ascending" style="width: 87.3125px;">Action
+                        </th>
+                     </tr>
+                     </thead>
+                     <tbody>
+
+
+                     <tr class="odd">
+                        <td class="sorting_1">
+                           <label class="checkboxs">
+                              <input type="checkbox">
+                              <span class="checkmarks"></span>
+                           </label>
+                        </td>
+                        <td>Thomas</td>
+                        <td>+12163547758</td>
+                        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                               data-cfemail="fb8f9394969a88bb9e839a968b979ed5989496">[email&nbsp;protected]</a></td>
+                        <td>Admin</td>
+                        <td>3/15/2022</td>
+                        <td><span class="bg-lightgreen badges">Active</span></td>
+                        <td>
+                           <a class="me-3" href="newuseredit.html">
+                              <img src="assets/img/icons/edit.svg" alt="img">
+                           </a>
+                           <a class="me-3 confirm-text" href="javascript:void(0);">
+                              <img src="assets/img/icons/delete.svg" alt="img">
+                           </a>
+                        </td>
+                     </tr>
+                     <tr class="even">
+                        <td class="sorting_1">
+                           <label class="checkboxs">
+                              <input type="checkbox">
+                              <span class="checkmarks"></span>
+                           </label>
+                        </td>
+                        <td>504Benjamin</td>
+                        <td>123-456-888</td>
+                        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                               data-cfemail="60031513140f0d0512200518010d100c054e030f0d">[email&nbsp;protected]</a></td>
+                        <td>Manager</td>
+                        <td>2/27/2022</td>
+                        <td><span class="bg-lightred badges">Restricted</span></td>
+                        <td>
+                           <a class="me-3" href="newuseredit.html">
+                              <img src="assets/img/icons/edit.svg" alt="img">
+                           </a>
+                           <a class="me-3 confirm-text" href="javascript:void(0);">
+                              <img src="assets/img/icons/delete.svg" alt="img">
+                           </a>
+                        </td>
+                     </tr>
+                     <tr class="odd">
+                        <td class="sorting_1">
+                           <label class="checkboxs">
+                              <input type="checkbox">
+                              <span class="checkmarks"></span>
+                           </label>
+                        </td>
+                        <td>James 524</td>
+                        <td>+12163547758</td>
+                        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                               data-cfemail="a0cac1cdc5d3e0c5d8c1cdd0ccc58ec3cfcd">[email&nbsp;protected]</a></td>
+                        <td>Salesman</td>
+                        <td>2/27/2022</td>
+                        <td><span class="bg-lightred badges">Restricted</span></td>
+                        <td>
+                           <a class="me-3" href="newuseredit.html">
+                              <img src="assets/img/icons/edit.svg" alt="img">
+                           </a>
+                           <a class="me-3 confirm-text" href="javascript:void(0);">
+                              <img src="assets/img/icons/delete.svg" alt="img">
+                           </a>
+                        </td>
+                     </tr>
+                     <tr class="even">
+                        <td class="sorting_1">
+                           <label class="checkboxs">
+                              <input type="checkbox">
+                              <span class="checkmarks"></span>
+                           </label>
+                        </td>
+                        <td>James 524</td>
+                        <td>+12163547758</td>
+                        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                               data-cfemail="94fef5f9f1e7d4f1ecf5f9e4f8f1baf7fbf9">[email&nbsp;protected]</a></td>
+                        <td>Salesman</td>
+                        <td>2/27/2022</td>
+                        <td><span class="bg-lightred badges">Restricted</span></td>
+                        <td>
+                           <a class="me-3" href="newuseredit.html">
+                              <img src="assets/img/icons/edit.svg" alt="img">
+                           </a>
+                           <a class="me-3 confirm-text" href="javascript:void(0);">
+                              <img src="assets/img/icons/delete.svg" alt="img">
+                           </a>
+                        </td>
+                     </tr>
+                     <tr class="odd">
+                        <td class="sorting_1">
+                           <label class="checkboxs">
+                              <input type="checkbox">
+                              <span class="checkmarks"></span>
+                           </label>
+                        </td>
+                        <td>Bruklin2022</td>
+                        <td>123-456-888</td>
+                        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                               data-cfemail="d4b6a6a1bfb8bdba94b1acb5b9a4b8b1fab7bbb9">[email&nbsp;protected]</a></td>
+                        <td>Delivery Biker</td>
+                        <td>2/27/2022</td>
+                        <td><span class="bg-lightgreen badges">Active</span></td>
+                        <td>
+                           <a class="me-3" href="newuseredit.html">
+                              <img src="assets/img/icons/edit.svg" alt="img">
+                           </a>
+                           <a class="me-3 confirm-text" href="javascript:void(0);">
+                              <img src="assets/img/icons/delete.svg" alt="img">
+                           </a>
+                        </td>
+                     </tr>
+                     <tr class="even">
+                        <td class="sorting_1">
+                           <label class="checkboxs">
+                              <input type="checkbox">
+                              <span class="checkmarks"></span>
+                           </label>
+                        </td>
+                        <td>BeverlyWIN25</td>
+                        <td>+12163547758</td>
+                        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                               data-cfemail="6e0c1c1b050207002e0b160f031e020b400d0103">[email&nbsp;protected]</a></td>
+                        <td>Delivery Biker</td>
+                        <td>2/27/2022</td>
+                        <td><span class="bg-lightgreen badges">Active</span></td>
+                        <td>
+                           <a class="me-3" href="newuseredit.html">
+                              <img src="assets/img/icons/edit.svg" alt="img">
+                           </a>
+                           <a class="me-3 confirm-text" href="javascript:void(0);">
+                              <img src="assets/img/icons/delete.svg" alt="img">
+                           </a>
+                        </td>
+                     </tr>
+                     <tr class="odd">
+                        <td class="sorting_1">
+                           <label class="checkboxs">
+                              <input type="checkbox">
+                              <span class="checkmarks"></span>
+                           </label>
+                        </td>
+                        <td>BHR256</td>
+                        <td>123-456-888</td>
+                        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                               data-cfemail="d098a5b2b5a290b5a8b1bda0bcb5feb3bfbd">[email&nbsp;protected]</a></td>
+                        <td>Sales Executive</td>
+                        <td>3/15/2022</td>
+                        <td><span class="bg-lightgreen badges">Active</span></td>
+                        <td>
+                           <a class="me-3" href="newuseredit.html">
+                              <img src="assets/img/icons/edit.svg" alt="img">
+                           </a>
+                           <a class="me-3 confirm-text" href="javascript:void(0);">
+                              <img src="assets/img/icons/delete.svg" alt="img">
+                           </a>
+                        </td>
+                     </tr>
+                     <tr class="even">
+                        <td class="sorting_1">
+                           <label class="checkboxs">
+                              <input type="checkbox">
+                              <span class="checkmarks"></span>
+                           </label>
+                        </td>
+                        <td>Thomas</td>
+                        <td>+12163547758</td>
+                        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                               data-cfemail="c5b1adaaa8a4b685a0bda4a8b5a9a0eba6aaa8">[email&nbsp;protected]</a></td>
+                        <td>Admin</td>
+                        <td>3/15/2022</td>
+                        <td><span class="bg-lightgreen badges">Active</span></td>
+                        <td>
+                           <a class="me-3" href="newuseredit.html">
+                              <img src="assets/img/icons/edit.svg" alt="img">
+                           </a>
+                           <a class="me-3 confirm-text" href="javascript:void(0);">
+                              <img src="assets/img/icons/delete.svg" alt="img">
+                           </a>
+                        </td>
+                     </tr>
+                     <tr class="odd">
+                        <td class="sorting_1">
+                           <label class="checkboxs">
+                              <input type="checkbox">
+                              <span class="checkmarks"></span>
+                           </label>
+                        </td>
+                        <td>504Benjamin</td>
+                        <td>123-456-888</td>
+                        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                               data-cfemail="62011711160d0f071022071a030f120e074c010d0f">[email&nbsp;protected]</a></td>
+                        <td>Manager</td>
+                        <td>2/27/2022</td>
+                        <td><span class="bg-lightred badges">Restricted</span></td>
+                        <td>
+                           <a class="me-3" href="newuseredit.html">
+                              <img src="assets/img/icons/edit.svg" alt="img">
+                           </a>
+                           <a class="me-3 confirm-text" href="javascript:void(0);">
+                              <img src="assets/img/icons/delete.svg" alt="img">
+                           </a>
+                        </td>
+                     </tr>
+                     <tr class="even">
+                        <td class="sorting_1">
+                           <label class="checkboxs">
+                              <input type="checkbox">
+                              <span class="checkmarks"></span>
+                           </label>
+                        </td>
+                        <td>James 524</td>
+                        <td>+12163547758</td>
+                        <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                               data-cfemail="274d464a425467425f464a574b420944484a">[email&nbsp;protected]</a></td>
+                        <td>Salesman</td>
+                        <td>2/27/2022</td>
+                        <td><span class="bg-lightred badges">Restricted</span></td>
+                        <td>
+                           <a class="me-3" href="newuseredit.html">
+                              <img src="assets/img/icons/edit.svg" alt="img">
+                           </a>
+                           <a class="me-3 confirm-text" href="javascript:void(0);">
+                              <img src="assets/img/icons/delete.svg" alt="img">
+                           </a>
+                        </td>
+                     </tr>
+                     </tbody>
+                  </table>
+                  <div class="dataTables_length" id="DataTables_Table_0_length"><label><select
+                        name="DataTables_Table_0_length" aria-controls="DataTables_Table_0"
+                        class="custom-select custom-select-sm form-control form-control-sm">
+                     <option value="10">10</option>
+                     <option value="25">25</option>
+                     <option value="50">50</option>
+                     <option value="100">100</option>
+                  </select></label></div>
+                  <div class="dataTables_paginate paging_numbers" id="DataTables_Table_0_paginate">
+                     <ul class="pagination">
+                        <li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0"
+                                                                        data-dt-idx="0" tabindex="0"
+                                                                        class="page-link">1</a></li>
+                        <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0"
+                                                                  data-dt-idx="1" tabindex="0" class="page-link">2</a>
+                        </li>
+                     </ul>
+                  </div>
+                  <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">1 - 10 of
+                     14 items
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </div>
+</div>
+</body>
+</html>

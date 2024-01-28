@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{shop/layout/layout}">
+<head>
+   <title>Home</title>
+
+   <!--   <link th:href="@{static/assets/shop/shop/css/styles.css}" rel="stylesheet">-->
+
+</head>
+<body>
+
+
+<div layout:fragment="content">
+   <!-- ============================ Hero Banner  Start================================== -->
+   <div class="home-slider margin-bottom-0">
+      <div th:each="banner:${banners}">
+         <div th:attr="data-background-image=${banner.get('link')}" class="item">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="home-slider-container">
+
+                        <!-- Slide Title -->
+                        <div class="home-slider-desc">
+                           <div class="home-slider-title mb-4">
+                              <h5 class="theme-cl fs-md ft-regular mb-0" th:text="${banner.get('sale')}">Save up to
+                                 60% off</h5>
+                              <h1 class="mb-1 ft-bold lg-heading" th:utext="${banner.get('heading')}">The Best
+                                 Deals<br>of The Year</h1>
+                              <span class="trending"
+                                    th:text="${banner.get('trending')}">There's nothing like trend</span>
+                           </div>
+
+                           <a href="#" class="btn stretched-link borders">Shop Now<i
+                                 class="lni lni-arrow-right ml-2"></i></a>
+                        </div>
+                        <!-- Slide Title / End -->
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </div>
+   <!-- ============================ Hero Banner End ================================== -->
+
+   <!-- ========================= Category Style ========================== -->
+   <section class="middle">
+      <div class="container">
+         <div class="row no-gutters exlio_gutters">
+
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+               <div class="single_cats">
+                  <a href="#" class="cards card-overflow card-scale">
+                     <div class="bg-image"
+                          style="background:url(http://localhost:8080/static/assets/shop/img/offer-1.png)no-repeat;"></div>
+                     <div class="ct_body">
+                        <div class="ct_body_caption left">
+                           <div class="p-5 d-flex align-items-center justify-content-center circle theme-bg text-center">
+                              <h2 class="m-0 ft-bold lh-1 text-light text-upper position-absolute">50%<span
+                                    class="d-block fs-sm">Off</span></h2>
+                           </div>
+                        </div>
+                        <div class="ct_footer left">
+                           <span class="stretched-link fs-md">Giày Nam<i
+                                 class="ti-arrow-circle-right"></i></span>
+                        </div>
+                     </div>
+                  </a>
+               </div>
+
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+               <div class="single_cats">
+                  <a href="#" class="cards card-overflow card-scale">
+                     <div class="bg-image"
+                          style="background:url(http://localhost:8080/static/assets/shop/img/offer-2.png)no-repeat;"></div>
+                     <div class="ct_body">
+                        <div class="ct_body_caption left">
+                           <div class="p-5 d-flex align-items-center justify-content-center circle theme-bg text-center">
+                              <h2 class="m-0 ft-bold lh-1 text-light text-upper position-absolute">40%<span
+                                    class="d-block fs-sm">Off</span></h2>
+                           </div>
+                        </div>
+                        <div class="ct_footer left">
+                              <span class="stretched-link fs-md">Giày Nữ <i
+                                    class="ti-arrow-circle-right"></i></span>
+                        </div>
+                     </div>
+                  </a>
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </section>
+   <!-- ============================ Category Style =============================== -->
+
+   <!-- ======================= Product List ======================== -->
+   <section class="middle">
+      <div class="container">
+
+         <div class="row justify-content-center">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+               <div class="sec_title position-relative text-center">
+                  <h2 class="off_title">Sản Phẩm</h2>
+                  <h3 class="ft-bold pt-3">Sản phẩm mới nhất</h3>
+               </div>
+            </div>
+         </div>
+
+         <!-- row -->
+         <div class="row align-items-center rows-products">
+
+            <!-- Single Item -->
+            <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+               <div class="product_grid card b-0">
+                  <div class="badge bg-success text-white position-absolute ft-regular ab-left text-upper">Sale</div>
+                  <button class="snackbar-wishlist btn btn_love position-absolute ab-right"><i
+                        class="far fa-heart"></i></button>
+                  <div class="card-body p-0">
+                     <div class="shop_thumb position-relative">
+                        <a class="card-img-top d-block overflow-hidden ovr-hide" href="shop-single-v1.html"><img
+                              class="card-img-top" src="https://giaydino.com/wp-content/uploads/2023/07/Giay-Nike-Air-Force-1-What-The-LA-CT1117-100-Giaydino.jpg" alt="..."></a>
+                        <a class="card-img-top d-block overflow-hidden ovr-show" href="shop-single-v1.html"><img
+                              class="card-img-top" src="https://giaydino.com/wp-content/uploads/2023/07/Giay-Nike-Air-Force-1-What-The-LA-CT1117-scaled.jpg" alt="..."></a>
+                        <div class="product-hover-overlay btn d-flex align-items-center justify-content-center">
+                           <div class="group_btn">
+
+                              <a href="#" class="prd_btn_square" data-toggle="tooltip" data-placement="top"
+                                 title="Quick view">
+                                 <!--                                       data-toggle="modal" data-target="#quickview"-->
+                                 <i class="fi fi-rr-expand" style="font-size: 16px"></i>
+                              </a>
+                              <!--                                 </div>-->
+                              <a href="javascript:void(0);" class="prd_btn_square snackbar-addcart"
+                                 data-toggle="tooltip" data-placement="top" title="Add To Cart">
+                                 <i class="fi fi-rr-shopping-cart-add" style="font-size: 16px"></i>
+                              </a>
+
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                        <div class="text-left">
+                           <div class="text-center">
+                              <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Giày Nike full fake</a></h5>
+                              <div class="elis_rty">
+                                 <span class="text-muted ft-medium line-through mr-2">$129.00</span>
+                                 <span class="ft-bold theme-cl fs-md">$99.00</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Single -->
+
+            <!-- Single Item -->
+            <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+               <div class="product_grid card b-0">
+                  <div class="badge bg-success text-white position-absolute ft-regular ab-left text-upper">Sale</div>
+                  <button class="snackbar-wishlist btn btn_love position-absolute ab-right"><i
+                          class="far fa-heart"></i></button>
+                  <div class="card-body p-0">
+                     <div class="shop_thumb position-relative">
+                        <a class="card-img-top d-block overflow-hidden ovr-hide" href="shop-single-v1.html"><img
+                                class="card-img-top" src="https://giaydino.com/wp-content/uploads/2023/07/Giay-Nike-Air-Force-1-What-The-LA-CT1117-100-Giaydino.jpg" alt="..."></a>
+                        <a class="card-img-top d-block overflow-hidden ovr-show" href="shop-single-v1.html"><img
+                                class="card-img-top" src="https://giaydino.com/wp-content/uploads/2023/07/Giay-Nike-Air-Force-1-What-The-LA-CT1117-scaled.jpg" alt="..."></a>
+                        <div class="product-hover-overlay btn d-flex align-items-center justify-content-center">
+                           <div class="group_btn">
+
+                              <a href="#" class="prd_btn_square" data-toggle="tooltip" data-placement="top"
+                                 title="Quick view">
+                                 <!--                                       data-toggle="modal" data-target="#quickview"-->
+                                 <i class="fi fi-rr-expand" style="font-size: 16px"></i>
+                              </a>
+                              <!--                                 </div>-->
+                              <a href="javascript:void(0);" class="prd_btn_square snackbar-addcart"
+                                 data-toggle="tooltip" data-placement="top" title="Add To Cart">
+                                 <i class="fi fi-rr-shopping-cart-add" style="font-size: 16px"></i>
+                              </a>
+
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                        <div class="text-left">
+                           <div class="text-center">
+                              <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Giày Nike full fake</a></h5>
+                              <div class="elis_rty">
+                                 <span class="text-muted ft-medium line-through mr-2">$129.00</span>
+                                 <span class="ft-bold theme-cl fs-md">$99.00</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Single -->
+
+            <!-- Single Item -->
+            <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+               <div class="product_grid card b-0">
+                  <div class="badge bg-success text-white position-absolute ft-regular ab-left text-upper">Sale</div>
+                  <button class="snackbar-wishlist btn btn_love position-absolute ab-right"><i
+                          class="far fa-heart"></i></button>
+                  <div class="card-body p-0">
+                     <div class="shop_thumb position-relative">
+                        <a class="card-img-top d-block overflow-hidden ovr-hide" href="shop-single-v1.html"><img
+                                class="card-img-top" src="https://giaydino.com/wp-content/uploads/2023/07/Giay-Nike-Air-Force-1-What-The-LA-CT1117-100-Giaydino.jpg" alt="..."></a>
+                        <a class="card-img-top d-block overflow-hidden ovr-show" href="shop-single-v1.html"><img
+                                class="card-img-top" src="https://giaydino.com/wp-content/uploads/2023/07/Giay-Nike-Air-Force-1-What-The-LA-CT1117-scaled.jpg" alt="..."></a>
+                        <div class="product-hover-overlay btn d-flex align-items-center justify-content-center">
+                           <div class="group_btn">
+
+                              <a href="#" class="prd_btn_square" data-toggle="tooltip" data-placement="top"
+                                 title="Quick view">
+                                 <!--                                       data-toggle="modal" data-target="#quickview"-->
+                                 <i class="fi fi-rr-expand" style="font-size: 16px"></i>
+                              </a>
+                              <!--                                 </div>-->
+                              <a href="javascript:void(0);" class="prd_btn_square snackbar-addcart"
+                                 data-toggle="tooltip" data-placement="top" title="Add To Cart">
+                                 <i class="fi fi-rr-shopping-cart-add" style="font-size: 16px"></i>
+                              </a>
+
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                        <div class="text-left">
+                           <div class="text-center">
+                              <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Giày Nike full fake</a></h5>
+                              <div class="elis_rty">
+                                 <span class="text-muted ft-medium line-through mr-2">$129.00</span>
+                                 <span class="ft-bold theme-cl fs-md">$99.00</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Single -->
+
+            <!-- Single Item -->
+            <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+               <div class="product_grid card b-0">
+                  <div class="badge bg-success text-white position-absolute ft-regular ab-left text-upper">Sale</div>
+                  <button class="snackbar-wishlist btn btn_love position-absolute ab-right"><i
+                          class="far fa-heart"></i></button>
+                  <div class="card-body p-0">
+                     <div class="shop_thumb position-relative">
+                        <a class="card-img-top d-block overflow-hidden ovr-hide" href="shop-single-v1.html"><img
+                                class="card-img-top" src="https://giaydino.com/wp-content/uploads/2023/07/Giay-Nike-Air-Force-1-What-The-LA-CT1117-100-Giaydino.jpg" alt="..."></a>
+                        <a class="card-img-top d-block overflow-hidden ovr-show" href="shop-single-v1.html"><img
+                                class="card-img-top" src="https://giaydino.com/wp-content/uploads/2023/07/Giay-Nike-Air-Force-1-What-The-LA-CT1117-scaled.jpg" alt="..."></a>
+                        <div class="product-hover-overlay btn d-flex align-items-center justify-content-center">
+                           <div class="group_btn">
+
+                              <a href="#" class="prd_btn_square" data-toggle="tooltip" data-placement="top"
+                                 title="Quick view">
+                                 <!--                                       data-toggle="modal" data-target="#quickview"-->
+                                 <i class="fi fi-rr-expand" style="font-size: 16px"></i>
+                              </a>
+                              <!--                                 </div>-->
+                              <a href="javascript:void(0);" class="prd_btn_square snackbar-addcart"
+                                 data-toggle="tooltip" data-placement="top" title="Add To Cart">
+                                 <i class="fi fi-rr-shopping-cart-add" style="font-size: 16px"></i>
+                              </a>
+
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                        <div class="text-left">
+                           <div class="text-center">
+                              <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Giày Nike full fake</a></h5>
+                              <div class="elis_rty">
+                                 <span class="text-muted ft-medium line-through mr-2">$129.00</span>
+                                 <span class="ft-bold theme-cl fs-md">$99.00</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Single -->
+
+            <!-- Single Item -->
+            <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+               <div class="product_grid card b-0">
+                  <div class="badge bg-success text-white position-absolute ft-regular ab-left text-upper">Sale</div>
+                  <button class="snackbar-wishlist btn btn_love position-absolute ab-right"><i
+                          class="far fa-heart"></i></button>
+                  <div class="card-body p-0">
+                     <div class="shop_thumb position-relative">
+                        <a class="card-img-top d-block overflow-hidden ovr-hide" href="shop-single-v1.html"><img
+                                class="card-img-top" src="https://giaydino.com/wp-content/uploads/2023/07/Giay-Nike-Air-Force-1-What-The-LA-CT1117-100-Giaydino.jpg" alt="..."></a>
+                        <a class="card-img-top d-block overflow-hidden ovr-show" href="shop-single-v1.html"><img
+                                class="card-img-top" src="https://giaydino.com/wp-content/uploads/2023/07/Giay-Nike-Air-Force-1-What-The-LA-CT1117-scaled.jpg" alt="..."></a>
+                        <div class="product-hover-overlay btn d-flex align-items-center justify-content-center">
+                           <div class="group_btn">
+
+                              <a href="#" class="prd_btn_square" data-toggle="tooltip" data-placement="top"
+                                 title="Quick view">
+                                 <!--                                       data-toggle="modal" data-target="#quickview"-->
+                                 <i class="fi fi-rr-expand" style="font-size: 16px"></i>
+                              </a>
+                              <!--                                 </div>-->
+                              <a href="javascript:void(0);" class="prd_btn_square snackbar-addcart"
+                                 data-toggle="tooltip" data-placement="top" title="Add To Cart">
+                                 <i class="fi fi-rr-shopping-cart-add" style="font-size: 16px"></i>
+                              </a>
+
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                        <div class="text-left">
+                           <div class="text-center">
+                              <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Giày Nike full fake</a></h5>
+                              <div class="elis_rty">
+                                 <span class="text-muted ft-medium line-through mr-2">$129.00</span>
+                                 <span class="ft-bold theme-cl fs-md">$99.00</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Single -->
+
+            <!-- Single Item -->
+            <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+               <div class="product_grid card b-0">
+                  <div class="badge bg-success text-white position-absolute ft-regular ab-left text-upper">Sale</div>
+                  <button class="snackbar-wishlist btn btn_love position-absolute ab-right"><i
+                          class="far fa-heart"></i></button>
+                  <div class="card-body p-0">
+                     <div class="shop_thumb position-relative">
+                        <a class="card-img-top d-block overflow-hidden ovr-hide" href="shop-single-v1.html"><img
+                                class="card-img-top" src="https://giaydino.com/wp-content/uploads/2023/07/Giay-Nike-Air-Force-1-What-The-LA-CT1117-100-Giaydino.jpg" alt="..."></a>
+                        <a class="card-img-top d-block overflow-hidden ovr-show" href="shop-single-v1.html"><img
+                                class="card-img-top" src="https://giaydino.com/wp-content/uploads/2023/07/Giay-Nike-Air-Force-1-What-The-LA-CT1117-scaled.jpg" alt="..."></a>
+                        <div class="product-hover-overlay btn d-flex align-items-center justify-content-center">
+                           <div class="group_btn">
+
+                              <a href="#" class="prd_btn_square" data-toggle="tooltip" data-placement="top"
+                                 title="Quick view">
+                                 <!--                                       data-toggle="modal" data-target="#quickview"-->
+                                 <i class="fi fi-rr-expand" style="font-size: 16px"></i>
+                              </a>
+                              <!--                                 </div>-->
+                              <a href="javascript:void(0);" class="prd_btn_square snackbar-addcart"
+                                 data-toggle="tooltip" data-placement="top" title="Add To Cart">
+                                 <i class="fi fi-rr-shopping-cart-add" style="font-size: 16px"></i>
+                              </a>
+
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                        <div class="text-left">
+                           <div class="text-center">
+                              <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Giày Nike full fake</a></h5>
+                              <div class="elis_rty">
+                                 <span class="text-muted ft-medium line-through mr-2">$129.00</span>
+                                 <span class="ft-bold theme-cl fs-md">$99.00</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Single -->
+
+            <!-- Single Item -->
+            <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+               <div class="product_grid card b-0">
+                  <div class="badge bg-success text-white position-absolute ft-regular ab-left text-upper">Sale</div>
+                  <button class="snackbar-wishlist btn btn_love position-absolute ab-right"><i
+                          class="far fa-heart"></i></button>
+                  <div class="card-body p-0">
+                     <div class="shop_thumb position-relative">
+                        <a class="card-img-top d-block overflow-hidden ovr-hide" href="shop-single-v1.html"><img
+                                class="card-img-top" src="https://giaydino.com/wp-content/uploads/2023/07/Giay-Nike-Air-Force-1-What-The-LA-CT1117-100-Giaydino.jpg" alt="..."></a>
+                        <a class="card-img-top d-block overflow-hidden ovr-show" href="shop-single-v1.html"><img
+                                class="card-img-top" src="https://giaydino.com/wp-content/uploads/2023/07/Giay-Nike-Air-Force-1-What-The-LA-CT1117-scaled.jpg" alt="..."></a>
+                        <div class="product-hover-overlay btn d-flex align-items-center justify-content-center">
+                           <div class="group_btn">
+
+                              <a href="#" class="prd_btn_square" data-toggle="tooltip" data-placement="top"
+                                 title="Quick view">
+                                 <!--                                       data-toggle="modal" data-target="#quickview"-->
+                                 <i class="fi fi-rr-expand" style="font-size: 16px"></i>
+                              </a>
+                              <!--                                 </div>-->
+                              <a href="javascript:void(0);" class="prd_btn_square snackbar-addcart"
+                                 data-toggle="tooltip" data-placement="top" title="Add To Cart">
+                                 <i class="fi fi-rr-shopping-cart-add" style="font-size: 16px"></i>
+                              </a>
+
+                           </div>
+                        </div>
+                     </div>
+                     <div class="card-footer b-0 p-3 pb-0 bg-white d-flex align-items-start justify-content-center">
+                        <div class="text-left">
+                           <div class="text-center">
+                              <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="shop-single-v1.html">Giày Nike full fake</a></h5>
+                              <div class="elis_rty">
+                                 <span class="text-muted ft-medium line-through mr-2">$129.00</span>
+                                 <span class="ft-bold theme-cl fs-md">$99.00</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Single -->
+
+
+         </div>
+         <!-- row -->
+
+         <div class="row justify-content-center">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+               <div class="position-relative text-center">
+                  <a href="shop-style-1.html" class="btn stretched-link borders">Explore More<i
+                        class="lni lni-arrow-right ml-2"></i></a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- ======================= Product List ======================== -->
+</div>
+
+</body>
+</html>

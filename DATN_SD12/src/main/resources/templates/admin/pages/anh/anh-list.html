@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .image-in-table {
+            max-width: 50%; /* Đảm bảo hình ảnh không vượt quá kích thước của ô */
+            height: auto; /* Đảm bảo tỷ lệ chiều rộng/chiều cao được giữ nguyên */
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <script>
+        function showConfigModalDialog(id, name) {
+            $('#name').text(name);
+            console.assert("Xóa Thành công")
+            $('#yesOption').attr('href', '/admin/anh/delete/' + id);
+            $('#configmationId').modal('show');
+
+
+        }
+        function cancelDelete() {
+            $('#configmationId').modal('hide'); // Đóng modal
+        }
+    </script>
+
+
+    <!-- Modal delete -->
+    <div class="modal" tabindex="-1" role="dialog" id="configmationId">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="color: black">Xác nhận</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span onclick="cancelDelete()">x</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p style="color: black">Bạn có muốn xóa nhãn hiệu này không?</p>
+                </div>
+                <div class="modal-footer">
+                    <a id="yesOption" type="button" class="btn btn-primary">Có</a>
+
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="cancelDelete()">Không</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Bảng Ảnh</h4>
+                <h6>Xem/Tìm kiếm ảnh</h6>
+
+                <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                    <span th:text="${errorMessage}"></span>
+                </div>
+
+                <div th:if="${successMessage}" class="alert alert-success" role="alert">
+                    <span th:text="${successMessage}"></span>
+                </div>
+            </div>
+            <div class="page-btn">
+                <a th:href="@{/admin/anh/createform}" class="btn btn-added">
+                    <img src="https://dreamspos.dreamguystech.com/html/template/assets/img/icons/plus.svg" class="me-1" alt="img">Thêm ảnh
+                </a>
+            </div>
+        </div>
+
+
+
+        <div class="card">
+            <div class="card-body">
+                <div class="table-top">
+                    <div class="search-set">
+                        <div class="search-path">
+                            <a class="btn btn-filter" id="filter_search">
+                                <img src="https://dreamspos.dreamguystech.com/html/template/assets/img/icons/filter.svg" alt="img">
+                                <span><img src="https://dreamspos.dreamguystech.com/html/template/assets/img/icons/closes.svg" alt="img"></span>
+
+                            </a>
+                        </div>
+                       <form>
+                           <div class="search-input">
+
+
+                           </div>
+                       </form>
+                    </div>
+                    <div class="wordset">
+                        <ul>
+                            <li>
+                                <a data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                   data-bs-original-title="pdf" aria-label="pdf"><img src="https://dreamspos.dreamguystech.com/html/template/assets/img/icons/pdf.svg"
+                                                                                      alt="img"></a>
+                            </li>
+                            <li>
+                                <a data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                   data-bs-original-title="excel" aria-label="excel"><img
+                                        src="https://dreamspos.dreamguystech.com/html/template/assets/img/icons/excel.svg" alt="img"></a>
+                            </li>
+                            <li>
+                                <a data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                   data-bs-original-title="print" aria-label="print"><img
+                                        src="https://dreamspos.dreamguystech.com/html/template/assets/img/icons/printer.svg" alt="img"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card" id="filter_inputs">
+                    <div class="card-body pb-0">
+                        <div class="row">
+                            <div class="col-lg-2 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <select class="select select2-hidden-accessible" data-select2-id="1" tabindex="-1"
+                                            aria-hidden="true">
+                                        <option data-select2-id="3">Choose Category</option>
+                                        <option>Computers</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <select class="select select2-hidden-accessible" data-select2-id="4" tabindex="-1"
+                                            aria-hidden="true">
+                                        <option data-select2-id="6">Choose Sub Category</option>
+                                        <option>Fruits</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <select class="select select2-hidden-accessible" data-select2-id="7" tabindex="-1"
+                                            aria-hidden="true">
+                                        <option data-select2-id="9">Choose Sub Brand</option>
+                                        <option>Iphone</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-sm-6 col-12 ms-auto">
+                                <div class="form-group">
+                                    <a class="btn btn-filters ms-auto"><img src="assets/img/icons/search-whites.svg"
+                                                                            alt="img"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                        <table class="table datanew dataTable no-footer" id="DataTables_Table_0" role="grid"
+                               aria-describedby="DataTables_Table_0_info">
+                            <thead>
+                            <tr role="row">
+
+
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                    colspan="1" aria-label="Category Code: activate to sort column ascending"
+                                    style="width: 172.212px;">Id
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                    colspan="1" aria-label="Category name: activate to sort column ascending"
+                                    style="width: 187.363px;">Link Ảnh
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                    colspan="1" aria-label="Category name: activate to sort column ascending"
+                                    style="width: 187.363px;">Id sản phẩm chi tiết
+                                </th>
+
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                    colspan="1" aria-label="Action: activate to sort column ascending"
+                                    style="width: 110.613px;">Action
+                                </th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+
+                            <tr class="odd" th:each="anh : ${anhList}">
+                                <td  th:text="${anh.id}"></td>
+
+                                <td >
+                                    <img class="image-in-table" th:src="${anh.linkAnh}"  />
+
+                                </td>
+
+                                <td>
+                                    <ul th:if="${anh.sanPhamChiTiet != null and not #lists.isEmpty(anh.sanPhamChiTiet)}">
+                                        <li th:each="anh : ${anh.sanPhamChiTiet}" th:text="${anh.id}"></li>
+                                    </ul>
+                                    <span th:unless="${anh.sanPhamChiTiet != null and not #lists.isEmpty(anh.sanPhamChiTiet)}">Chưa có</span>
+                                </td>
+
+
+                                <td>
+                                    <a class="me-3" th:href="@{'/admin/anh/updateform/' + ${anh.id}}">
+                                        <img src="https://dreamspos.dreamguystech.com/html/template/assets/img/icons/edit.svg" alt="img">
+                                    </a>
+                                    <a th:data-id="${anh.id}"
+                                       onclick="showConfigModalDialog(this.getAttribute('data-id'))"
+                                       type="button" data-toggle="tooltip" title=""
+                                       data-original-title="Xóa">
+
+                                        <img src="https://dreamspos.dreamguystech.com/html/template/assets/img/icons/delete.svg"
+                                             alt="img">
+
+                                    </a>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="dataTables_paginate paging_numbers" id="DataTables_Table_0_paginate">
+                            <ul class="pagination">
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</script>
+</body>
+</html>
+

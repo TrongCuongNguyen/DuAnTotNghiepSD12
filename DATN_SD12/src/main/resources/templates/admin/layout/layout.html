@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport"
+         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="shortcut icon" type="image/png" th:href="@{~/static/assets/admin/img/favicon.png}">
+   <title>Main Admin Dashboard Layout</title>
+<!-- thu muc css-->
+   <link rel="stylesheet" th:href="@{~/static/assets/admin/css/bootstrap.min.css}">
+   <link rel="stylesheet" th:href="@{~/static/assets/admin/css/animate.css}">
+   <link rel="stylesheet" th:href="@{~/static/assets/admin/css/dataTables.bootstrap4.min.css}">
+   <link rel="stylesheet" th:href="@{~/static/assets/admin/css/bootstrap-datetimepicker.min.css}">
+<!-- thu muc plugins-->
+   <link rel="stylesheet" th:href="@{~/static/assets/admin/plugins/fontawesome/css/fontawesome.min.css}">
+   <link rel="stylesheet" th:href="@{~/static/assets/admin/plugins/fontawesome/css/all.min.css}">
+
+   <link rel="stylesheet" th:href="@{~/static/assets/admin/plugins/alertify/alertify.min.css}">
+
+   <link rel="stylesheet" th:href="@{~/static/assets/admin/plugins/dragula/css/dragula.min.css}">
+
+   <link rel="stylesheet" th:href="@{~/static/assets/admin/plugins/fullcalendar/fullcalendar.min.css}">
+
+   <link rel="stylesheet" th:href="@{~/static/assets/admin/plugins/ion-rangeslider/css/ion.rangeSlider.min.css}">
+
+   <link rel="stylesheet" th:href="@{~/static/assets/admin/plugins/scrollbar/scroll.min.css}">
+
+   <link rel="stylesheet" th:href="@{~/static/assets/admin/plugins/select2/css/select2.min.css}">
+
+   <link rel="stylesheet" th:href="@{~/static/assets/admin/css/style.css}">
+<!--   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>-->
+</head>
+<body>
+<div id="global-loader">
+   <div class="whirly-loader"> </div>
+</div>
+<div id="main-wrapper">
+   <div th:replace="~{/admin/fragments/header::header}"></div>
+   <div th:replace="~{/admin/fragments/sidebar::sidebar}"></div>
+   <div class="page-wrapper" layout:fragment="content"> <!-- Chi thay the noi dung ben trong, khong thay the ca the div nhu th:replace-->
+      Layout Content
+   </div>
+
+<!--   <div th:replace="~{shop/fragments/footer::footer}"></div>-->
+
+
+<!--   <div th:replace="~{shop/fragments/card-modal::cart}"></div>-->
+<!--   <div th:replace="~{shop/fragments/search-modal::search}"></div>-->
+<!--   <div th:replace="~{shop/fragments/quick-view-modal::quickView}"></div>-->
+<!--   <div th:replace="~{shop/fragments/wishlist-modal::wishList}"></div>-->
+
+<!--   <a id="back2Top" class="top-scroll" title="Back to top" href="#">-->
+<!--      <i class="fi fi-rr-chevron-double-up"></i>-->
+<!--   </a>-->
+
+</div>
+
+</body>
+
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script th:src="@{~/static/assets/admin/js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{~/static/assets/admin/js/feather.min.js}"></script>
+<script th:src="@{~/static/assets/admin/js/jquery.slimscroll.min.js}"></script>
+<script th:src="@{~/static/assets/admin/js/jquery.dataTables.min.js}"></script>
+<script th:src="@{~/static/assets/admin/js/jquery-ui.min.js}"></script>
+<script th:src="@{~/static/assets/admin/js/moment.min.js}"></script>
+<script th:src="@{~/static/assets/admin/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{~/static/assets/admin/js/bootstrap-datetimepicker.min.js}"></script>
+<script th:src="@{~/static/assets/admin/js/bootstrap.bundle.min.js}"></script>
+
+<!-- ============================================================== -->
+<!-- This page plugins -->
+<!-- ============================================================== -->
+<script th:src="@{~/static/assets/admin/plugins/alertify/alertify.min.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/alertify/custom-alertify.min.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/apexchart/apexcharts.min.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/apexchart/chart-data.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/chartjs/chart.min.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/chartjs/chart-data.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/clipboard/clipboard.min.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/countup/jquery.counterup.min.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/countup/jquery.missofis-countdown.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/countup/jquery.waypoints.min.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/dragula/js/dragula.min.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/dragula/js/drag-drop.min.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/fileupload/fileupload.min.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/flot/jquery.flot.fillbetween.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/flot/jquery.flot.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/flot/jquery.flot.pie.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/flot/chart-data.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/fullcalendar/fullcalendar.min.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/fullcalendar/jquery.fullcalendar.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/ion-rangeslider/js/ion.rangeSlider.min.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/ion-rangeslider/js/custom-rangeslider.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/moment/moment.min.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/morris/morris.min.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/morris/raphael-min.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/morris/chart-data.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/peity/jquery.peity.min.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/peity/chart-data.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/raty/jquery.raty.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/raty/custom.raty.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/scrollbar/scrollbar.min.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/scrollbar/custom-scroll.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/select2/js/select2.min.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/select2/js/custom-select.js}"></script>
+
+<script th:src="@{~/static/assets/admin/plugins/sweetalert/sweetalert2.all.min.js}"></script>
+<script th:src="@{~/static/assets/admin/plugins/sweetalert/sweetalerts.min.js}"></script>
+
+
+<script th:src="@{~/static/assets/admin/js/script.js}"></script>
+
+</html>

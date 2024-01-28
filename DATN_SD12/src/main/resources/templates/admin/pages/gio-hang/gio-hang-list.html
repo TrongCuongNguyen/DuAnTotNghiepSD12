@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Mục Sản Phẩm</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        /*.pagination {*/
+        /*  display: flex;*/
+        /*  justify-content: center;*/
+        /*  align-items: center;*/
+        /*  margin-top: 20px;*/
+        /*}*/
+        /*.pagination .page-item {*/
+        /*  margin: 0 5px;*/
+        /*}*/
+
+        .pagination-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .pagination li {
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .pagination li.active {
+            font-weight: bold;
+        }
+
+        .pagination li.disabled {
+            cursor: not-allowed;
+        }
+
+        .pagination .page-link {
+            color: #007bff;
+            border: 1px solid #007bff;
+        }
+
+        .pagination .page-link:hover {
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #007bff;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Danh Sách Giỏ Hàng</h1>
+
+    <!-- Bảng hiển thị danh sách danh mục sản phẩm -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Số Lượng</th>
+            <th scope="col">Giá Tiền</th>
+            <th scope="col">Tổng Tiền</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Duyệt danh sách và hiển thị thông tin danh mục sản phẩm -->
+        <tr th:each="gioHangChiTietList : ${gioHangChiTietList}">
+            <td th:text="${gioHangChiTietList.id}"></td>
+            <td th:text="${gioHangChiTietList.soLuong}"></td>
+            <td th:text="${gioHangChiTietList.giaTien}"></td>
+            <td th:text="${gioHangChiTietList.tongTien}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Liên kết chức năng tạo mới danh mục sản phẩm -->
+    <a th:href="@{/admin/danhmucsanpham/form}">Tạo Mới Giỏ Hàng</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    </style>
+
+
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="content">
+        <div class="page-header">
+            <div class="page-title">
+                <h4> Favorite product list </h4>
+                <h6> View/Search for favorite products </h6>
+
+                <!-- Thông báo -->
+                <div id="thongBaoDiv" class="alert alert-info" style="display: none;" >
+                    <p th:text="${thongBao}"></p>
+                </div>
+
+
+
+                <!-- Script để hiển thị và ẩn thông báo -->
+                <script>
+                    // Hiển thị thông báo
+                    document.getElementById("thongBaoDiv").style.display = "block";
+
+                    // Ẩn thông báo sau 5 giây
+                    setTimeout(function(){
+                        document.getElementById("thongBaoDiv").style.display = "none";
+                    }, 5000);
+                </script>
+
+            </div>
+            <div class="page-btn">
+                <a th:href="@{/admin/sanPhamYeuThich/createform}" class="btn btn-added">
+                    Add Category
+                </a>
+            </div>
+        </div>
+
+        <div th:if="${messeger != null}" class="alert alert-info">
+            <p th:text="${messeger}"></p>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="table-top">
+                    <div class="search-set">
+                        <div class="search-path">
+                            <a class="btn btn-filter" id="filter_search">
+                                </span>
+                            </a>
+                        </div>
+                        <form>
+                            <div class="search-input">
+                                <a class="btn btn-searchset"></a>
+                                <div id="DataTables_Table_0_filter" class="dataTables_filter"><label> <input
+                                        type="search"
+                                        class="form-control form-control-sm"
+                                        placeholder="Search..."
+                                        aria-controls="DataTables_Table_0"></label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="wordset">
+                        <ul>
+                            <li>
+                                <a data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                   data-bs-original-title="pdf" aria-label="pdf"></a>
+                            </li>
+                            <li>
+                                <a data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                   data-bs-original-title="excel" aria-label="excel"></a>
+                            </li>
+                            <li>
+                                <a data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                   data-bs-original-title="print" aria-label="print"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card" id="filter_inputs">
+                    <div class="card-body pb-0">
+                        <div class="row">
+                            <div class="col-lg-2 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <select class="select select2-hidden-accessible" data-select2-id="1" tabindex="-1"
+                                            aria-hidden="true">
+                                        <option data-select2-id="3">Choose Category</option>
+                                        <option>Computers</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <select class="select select2-hidden-accessible" data-select2-id="4" tabindex="-1"
+                                            aria-hidden="true">
+                                        <option data-select2-id="6">Choose Sub Category</option>
+                                        <option>Fruits</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <select class="select select2-hidden-accessible" data-select2-id="7" tabindex="-1"
+                                            aria-hidden="true">
+                                        <option data-select2-id="9">Choose Sub Brand</option>
+                                        <option>Iphone</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-sm-6 col-12 ms-auto">
+                                <div class="form-group">
+                                    <a class="btn btn-filters ms-auto"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                        <table class="table datanew dataTable no-footer" id="DataTables_Table_0" role="grid"
+                               aria-describedby="DataTables_Table_0_info">
+                            <thead>
+                            <tr role="row">
+
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                    colspan="1" aria-label="Category name: activate to sort column ascending"
+                                    style="width: 187.363px;">Id
+                                </th>
+
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                    colspan="1" aria-label="Category name: activate to sort column ascending"
+                                    style="width: 187.363px;"> ID Khách Hàng
+                                </th>
+
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                    colspan="1" aria-label="Description: activate to sort column ascending"
+                                    style="width: 227.863px;"> Tên Khách Hàng
+                                </th>
+
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                    colspan="1" aria-label="Category Code: activate to sort column ascending"
+                                    style="width: 172.212px;"> ID Sản Phẩm
+                                </th>
+
+
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                    colspan="1" aria-label="Description: activate to sort column ascending"
+                                    style="width: 227.863px;"> Tên Sản Phẩm
+                                </th>
+
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                    colspan="1" aria-label="Description: activate to sort column ascending"
+                                    style="width: 227.863px;"> Action
+                                </th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="odd" th:each="sanPhamYeuThich : ${sanPhamYeuThichList}">
+                                <td th:text="${sanPhamYeuThich.id}"></td>
+                                <td th:text="${sanPhamYeuThich.khachHang.id}"></td>
+                                <td th:text="${sanPhamYeuThich.khachHang.hoVaTen}"></td>
+                                <td th:text="${sanPhamYeuThich.sanPham.id}"></td>
+                                <td th:text="${sanPhamYeuThich.sanPham.ten}"></td>
+                                <td>
+                                    <a class="me-3 "
+                                       th:href="@{'/admin/sanPhamYeuThich/updateform/' + ${sanPhamYeuThich.id}}"> ✎
+                                    </a>
+
+
+                                    <a th:data-id="${sanPhamYeuThich.id}"
+                                       onclick="showConfigModalDialog(this.getAttribute('data-id'))"
+                                       type="button" data-toggle="tooltip" title=""
+                                       data-original-title="Xóa"> ☠
+
+                                    </a>
+
+
+                                </td>
+
+
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <script>
+                            function showConfigModalDialog(id, name) {
+                                $('#name').text(name);
+                                console.assert("Xóa Thành công")
+                                $('#yesOption').attr('href', '/admin/sanPhamYeuThich/delete/' + id);
+                                $('#configmationId').modal('show');
+
+                            }
+
+                            function cancelDelete() {
+                                $('#configmationId').modal('hide'); // Đóng modal
+                            }
+                        </script>
+
+                        <!-- Modal delete -->
+                        <div class="modal" tabindex="-1" role="dialog" id="configmationId">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" style="color: black">Xác nhận</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span onclick="cancelDelete()">x</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p style="color: black">Bạn có muốn xóa nhãn hiệu này không?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a id="yesOption" type="button" class="btn btn-primary">Có</a>
+
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                                onclick="cancelDelete()">Không
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>

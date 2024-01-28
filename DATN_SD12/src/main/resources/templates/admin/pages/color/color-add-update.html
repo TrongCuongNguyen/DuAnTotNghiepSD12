@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="content">
+        <div class="page-header">
+            <div class="page-title">
+                <h4>ADD Màu Sắc</h4>
+                <h6>Edit a Color</h6>
+            </div>
+        </div>
+
+
+        <form th:object="${mauSac}"
+              th:action="${ mauSac.id != null ? '/admin/color/updateColor/' + mauSac.id : '/admin/color/addColor'}"
+              method="post" class="container mt-5">
+
+            <!--            <input type="hidden" th:field="*{id}" />-->
+            <div class="form-group">
+                <label for="ma">Mã:</label>
+                <input type="text" id="ma" th:field="*{ma}" class="form-control" th:errorclass="is-invalid" required>
+                <span th:if="${#fields.hasErrors('ma')}" th:errors="*{ma}" class="invalid-feedback"></span>
+            </div>
+            <div class="form-group">
+                <label for="maMau">Mã màu: </label>
+                <input type="text" id="maMau" th:field="*{maMau}" class="form-control" th:errorclass="is-invalid" required>
+                <span th:if="${#fields.hasErrors('maMau')}" th:errors="*{maMau}" class="invalid-feedback"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="ten">Tên :</label>
+                <input type="text" id="ten" th:field="*{ten}" class="form-control" th:errorclass="is-invalid" required>
+                <span th:if="${#fields.hasErrors('ten')}" th:errors="*{ten}" class="invalid-feedback"></span>
+            </div>
+
+            <button type="submit">Lưu</button>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>

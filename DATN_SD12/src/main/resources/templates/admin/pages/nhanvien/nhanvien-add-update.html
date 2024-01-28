@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .error-message {
+            color: red;
+        }
+    </style>
+
+    <script>
+        function validateForm() {
+            var ma = document.getElementById("ma").value;
+            var ten = document.getElementById("ten").value;
+            var email = document.getElementById("email").value;
+            var soDienThoai = document.getElementById("soDienThoai").value;
+            var matKhau = document.getElementById("matKhau").value;
+            var CCCD = document.getElementById("CCCD").value;
+            var diaChi = document.getElementById("diaChi").value;
+            var ngaySinh = document.getElementById("ngaySinh").value;
+            var hinhAnh = document.getElementById("hinhAnh").value;
+            var gioiTinhNam = document.getElementById("male").checked;
+            var gioiTinhNu = document.getElementById("female").checked;
+            var trangThaiHoatDong = document.getElementById("active").checked;
+            var trangThaiNgungHoatDong = document.getElementById("inactive").checked;
+
+            var hasError = false;
+
+            // Hàm kiểm tra tên chỉ chứa chữ cái và dấu cách
+            // Hàm kiểm tra tên có dấu và khoảng trắng
+            function isValidName(name) {
+                // Cho phép chữ cái, ký tự dấu và khoảng trắng
+                var namePattern = /^[a-zA-Z\sàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđĐ]+$/;
+                return namePattern.test(name);
+            }
+
+            // Hàm kiểm tra mật khẩu không chứa ký tự đặc biệt
+            function isValidPassword(password) {
+                var passwordPattern = /^[a-zA-Z0-9]*$/;
+                return passwordPattern.test(password);
+            }
+
+            // Hàm kiểm tra định dạng email
+            function isValidEmail(email) {
+                var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                return emailPattern.test(email);
+            }
+
+            // Hàm kiểm tra định dạng số điện thoại
+            function isValidPhoneNumber(phoneNumber) {
+                var phoneNumberPattern = /^[0-9]{10}$/;
+                return phoneNumberPattern.test(phoneNumber);
+            }
+
+            // Hàm kiểm tra định dạng căn cước công dân
+            function isValidCCCD(CCCD) {
+                var CCCDPattern = /^[0-9]{12}$/;
+                return CCCDPattern.test(CCCD);
+            }
+
+            // Hàm kiểm tra định dạng địa chỉ
+            function isValidAddress(address) {
+                var addressPattern = /^[a-zA-Z0-9\s,.-]+$/;
+                return addressPattern.test(address);
+            }
+
+            // Hàm kiểm tra định dạng ngày tháng
+            function isValidDate(date) {
+                var datePattern = /^\d{4}-\d{2}-\d{2}$/;
+                return datePattern.test(date);
+            }
+
+            // Hàm kiểm tra giới tính
+            function isValidGender() {
+                return gioiTinhNam || gioiTinhNu;
+            }
+
+            // Hàm kiểm tra trạng thái
+            function isValidStatus() {
+                return trangThaiHoatDong || trangThaiNgungHoatDong;
+            }
+
+            // Hàm kiểm tra định dạng URL hình ảnh
+            function isValidName(name) {
+                // Cho phép chữ cái, ký tự dấu và khoảng trắng
+                var namePattern = /^[a-zA-Z\sàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđĐ]+$/;
+                return namePattern.test(name);
+            }
+
+            if (ma.trim() === "") {
+                hasError = true;
+                document.getElementById("ma-error").innerText = "Mã không được để trống.";
+            } else {
+                document.getElementById("ma-error").innerText = "";
+            }
+
+            if (!isValidName(ten)) {
+                hasError = true;
+                document.getElementById("ten-error").innerText = "Tên không hợp lệ.";
+            } else {
+                document.getElementById("ten-error").innerText = "";
+            }
+
+            if (email.trim() === "" || !isValidEmail(email)) {
+                hasError = true;
+                document.getElementById("email-error").innerText = "Email không hợp lệ.";
+            } else {
+                document.getElementById("email-error").innerText = "";
+            }
+
+            if (soDienThoai.trim() === "" || !isValidPhoneNumber(soDienThoai)) {
+                hasError = true;
+                document.getElementById("soDienThoai-error").innerText = "Số điện thoại không hợp lệ.";
+            } else {
+                document.getElementById("soDienThoai-error").innerText = "";
+            }
+
+            if (!isValidPassword(matKhau)) {
+                hasError = true;
+                document.getElementById("matKhau-error").innerText = "Mật khẩu không hợp lệ.";
+            } else {
+                document.getElementById("matKhau-error").innerText = "";
+            }
+
+            if (CCCD.trim() === "" || !isValidCCCD(CCCD)) {
+                hasError = true;
+                document.getElementById("CCCD-error").innerText = "Căn cước công dân không hợp lệ.";
+            } else {
+                document.getElementById("CCCD-error").innerText = "";
+            }
+
+            if (diaChi.trim() === "" || !isValidAddress(diaChi)) {
+                hasError = true;
+                document.getElementById("diaChi-error").innerText = "Địa chỉ không hợp lệ.";
+            } else {
+                document.getElementById("diaChi-error").innerText = "";
+            }
+
+            if (ngaySinh.trim() === "" || !isValidDate(ngaySinh)) {
+                hasError = true;
+                document.getElementById("ngaySinh-error").innerText = "Ngày sinh không hợp lệ.";
+            } else {
+                document.getElementById("ngaySinh-error").innerText = "";
+            }
+
+            if (hinhAnh.trim() === "" || !isValidImageURL(hinhAnh)) {
+                hasError = true;
+                document.getElementById("hinhAnh-error").innerText = "Hình ảnh không hợp lệ.";
+            } else {
+                document.getElementById("hinhAnh-error").innerText = "";
+            }
+
+            if (!isValidGender()) {
+                hasError = true;
+                document.getElementById("gioiTinh-error").innerText = "Vui lòng chọn giới tính.";
+            } else {
+                document.getElementById("gioiTinh-error").innerText = "";
+            }
+
+            if (!isValidStatus()) {
+                hasError = true;
+                document.getElementById("trangThai-error").innerText = "Vui lòng chọn trạng thái.";
+            } else {
+                document.getElementById("trangThai-error").innerText = "";
+            }
+
+            if (hasError) {
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="content">
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Nhân viên</h4>
+                <h6>Thêm, Sửa nhân viên</h6>
+            </div>
+            <div class="page-btn">
+                <a th:href="@{/admin/chucvu/createform}" class="btn btn-added">
+                    <img src="https://dreamspos.dreamguystech.com/html/template/assets/img/icons/plus.svg" class="me-1" alt="img">Thêm chức vụ
+                </a>
+            </div>
+        </div>
+        <form id="myForm" onsubmit="
+        return validateForm();" th:object="${nhanVien}"
+              th:action="${nhanVien.id != null ? '/admin/nhanvien/update/' + nhanVien.id : '/admin/nhanvien/create'}"
+              method="post">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div th:if="${errorMessage}" class="error-message">
+                            <p th:text="${errorMessage}"></p>
+                        </div>
+                        <div th:if="${errorMessage1}" class="error-message">
+                            <p th:text="${errorMessage1}"></p>
+                        </div>
+                        <div th:if="${errorMessage2}" class="error-message">
+                            <p th:text="${errorMessage2}"></p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="ma">Mã:</label>
+                                <input type="text" id="ma" name="ma" th:field="*{ma}">
+                                <p class="error-message" id="ma-error"></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="ten">Tên:</label>
+                                <input type="text" id="ten" name="ten" th:field="*{hoVaTen}">
+                                <p class="error-message" id="ten-error"></p>
+                            </div>
+                            <div class="form-group">
+                                <label>Giới tính:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="male" name="gioiTinh" value="Nam"
+                                           th:field="*{gioiTinh}"/>
+                                    <label class="form-check-label" for="male">Nam</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="female" name="gioiTinh" value="Nữ"
+                                           th:field="*{gioiTinh}"/>
+                                    <label class="form-check-label" for="female">Nữ</label>
+                                </div>
+                                <p class="error-message" id="gioiTinh-error"></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="ngaySinh">Ngày Sinh:</label>
+                                <input type="date" id="ngaySinh" name="ngaySinh" th:field="*{ngaySinh}"/>
+                                <p class="error-message" id="ngaySinh-error"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" th:field="*{email}"/>
+                                <p class="error-message" id="email-error"></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="soDienThoai">Số Điện Thoại:</label>
+                                <input type="text" id="soDienThoai" name="soDienThoai" th:field="*{soDienThoai}"/>
+                                <p class="error-message" id="soDienThoai-error"></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="matKhau">Mật Khẩu:</label>
+                                <input type="text" id="matKhau" name="matKhau" th:field="*{matKhau}"/>
+                                <p class="error-message" id="matKhau-error"></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="diaChi">Địa Chỉ:</label>
+                                <input type="text" id="diaChi" name="diaChi" th:field="*{diaChi}"/>
+                                <p class="error-message" id="diaChi-error"></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="CCCD">Căn Cước Công Dân:</label>
+                                <input type="text" id="CCCD" name="CCCD" th:field="*{CCCD}"/>
+                                <p class="error-message" id="CCCD-error"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Trạng thái:</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="active" name="trangThai" value="1"
+                                   th:field="*{trangThai}"/>
+                            <label class="form-check-label" for="active">Hoạt động</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="inactive" name="trangThai" value="0"
+                                   th:field="*{trangThai}"/>
+                            <label class="form-check-label" for="inactive">Ngưng hoạt động</label>
+                        </div>
+                        <p class="error-message" id="trangThai-error"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="chucVuList">Chức Vụ:</label>
+                        <select id="chucVuList" name="chucVuList" th:field="*{chucVuList}" multiple th:if="${not #lists.isEmpty(allChucVuList)}">
+                            <option th:each="chucVu : ${allChucVuList}" th:value="${chucVu.id}" th:text="${chucVu.ten}"></option>
+                        </select>
+                        <div id="chucVuError" style="color: red;" th:if="${#lists.isEmpty(allChucVuList)}">Chưa có chức vụ hãy thêm chức vụ ở bảng chức vụ.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hinhAnh">Hình Ảnh:</label>
+                        <input type="text" id="hinhAnh" name="hinhAnh" th:field="*{hinhAnh}"/>
+                        <p class="error-message" id="hinhAnh-error"></p>
+                    </div>
+                    <div class="col-lg-12">
+                        <button type="submit" class="btn btn-submit me-2">Lưu</button>
+                        <a th:href="@{'/admin/nhanvien/list'}" class="btn btn-cancel">Cancel</a>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<!--<script>-->
+<!--    document.getElementById("myForm").onsubmit = function (event) {-->
+<!--        // Lấy giá trị của các trường input-->
+<!--        var ma = document.getElementById("ma").value;-->
+<!--        var ten = document.getElementById("ten").value;-->
+<!--        var email = document.getElementById("email").value;-->
+<!--        var soDienThoai = document.getElementById("soDienThoai").value;-->
+<!--        var matKhau = document.getElementById("matKhau").value;-->
+<!--        var diaChi = document.getElementById("diaChi").value;-->
+<!--        var CCCD = document.getElementById("CCCD").value;-->
+
+<!--        // Kiểm tra các trường có ký tự đặc biệt không-->
+<!--        var regex = /^[a-zA-Z0-9]+$/;-->
+<!--        if (!regex.test(ma) || !regex.test(ten) || !regex.test(diaChi) || !regex.test(CCCD)) {-->
+<!--            alert("Các trường không được chứa ký tự đặc biệt.");-->
+<!--            event.preventDefault(); // Ngăn chặn gửi form đi nếu có lỗi-->
+<!--            return false;-->
+<!--        }-->
+
+<!--        // Kiểm tra định dạng email-->
+<!--        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;-->
+<!--        if (!emailRegex.test(email)) {-->
+<!--            alert("Định dạng email không hợp lệ.");-->
+<!--            event.preventDefault();-->
+<!--            return false;-->
+<!--        }-->
+
+<!--        // Kiểm tra định dạng số điện thoại (chỉ chấp nhận số và dấu '+')-->
+<!--        var phoneRegex = /^[0-9+]+$/;-->
+<!--        if (!phoneRegex.test(soDienThoai)) {-->
+<!--            alert("Số điện thoại không hợp lệ.");-->
+<!--            event.preventDefault();-->
+<!--            return false;-->
+<!--        }-->
+
+<!--        // Kiểm tra các trường không được để trống-->
+<!--        if (ma.trim() === '' || ten.trim() === '' || email.trim() === '' || soDienThoai.trim() === '' || matKhau.trim() === '' || diaChi.trim() === '' || CCCD.trim() === '') {-->
+<!--            alert("Vui lòng điền đầy đủ thông tin.");-->
+<!--            event.preventDefault(); // Ngăn chặn gửi form đi nếu có trường trống-->
+<!--            return false;-->
+<!--        } else {-->
+<!--            // Kiểm tra trường Mã-->
+<!--            if (ma.trim() === '') {-->
+<!--                alert("Vui lòng nhập Mã.");-->
+<!--                event.preventDefault();-->
+<!--                return false;-->
+<!--            }-->
+
+<!--            // Kiểm tra trường Tên-->
+<!--            if (ten.trim() === '') {-->
+<!--                alert("Vui lòng nhập Tên.");-->
+<!--                event.preventDefault();-->
+<!--                return false;-->
+<!--            }-->
+
+<!--            // Kiểm tra trường Email-->
+<!--            if (email.trim() === '') {-->
+<!--                alert("Vui lòng nhập Email.");-->
+<!--                event.preventDefault();-->
+<!--                return false;-->
+<!--            }-->
+
+<!--            // Kiểm tra trường Số Điện Thoại-->
+<!--            if (soDienThoai.trim() === '') {-->
+<!--                alert("Vui lòng nhập Số Điện Thoại.");-->
+<!--                event.preventDefault();-->
+<!--                return false;-->
+<!--            }-->
+
+<!--            // Kiểm tra trường Mật Khẩu-->
+<!--            if (matKhau.trim() === '') {-->
+<!--                alert("Vui lòng nhập Mật Khẩu.");-->
+<!--                event.preventDefault();-->
+<!--                return false;-->
+<!--            }-->
+
+<!--            // Kiểm tra trường Địa Chỉ-->
+<!--            if (diaChi.trim() === '') {-->
+<!--                alert("Vui lòng nhập Địa Chỉ.");-->
+<!--                event.preventDefault();-->
+<!--                return false;-->
+<!--            }-->
+
+<!--            // Kiểm tra trường Căn Cước Công Dân-->
+<!--            if (CCCD.trim() === '') {-->
+<!--                alert("Vui lòng nhập Căn Cước Công Dân.");-->
+<!--                event.preventDefault();-->
+<!--                return false;-->
+<!--            }-->
+
+<!--        }-->
+<!--        // Các kiểm tra khác nếu cần thiết...-->
+
+<!--        // Nếu các trường đều hợp lệ, form sẽ được gửi đi-->
+<!--        return true;-->
+<!--    };-->
+
+</script>
+
+</body>
+</html>

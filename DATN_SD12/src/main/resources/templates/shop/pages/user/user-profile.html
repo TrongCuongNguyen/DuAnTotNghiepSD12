@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{shop/layout/user-layout}">
+<head>
+   <title>User Profile</title>
+   <!--   <link th:href="@{~/static/assets/css/styles.css}" rel="stylesheet">-->
+</head>
+<body>
+<div layout:fragment="content">
+   <!-- row -->
+   <div class="row">
+      <!--      Tham khảo bên TiKi-->
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+         <p class="font-weight-bold">Thông tin cá nhân</p>
+         <form action="/user/update" class="row m-0" th:object="${userDetails}">
+            <input type="hidden" th:field="${userDetails.id}">
+            <input type="hidden" th:field="${userDetails.ma}">
+            <input type="hidden" th:field="${userDetails.email}">
+            <input type="hidden" th:field="${userDetails.matKhau}">
+            <!--         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">-->
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+               <div class="form-group">
+                  <label>Họ và Tên</label>
+                  <input type="text" class="form-control rounded" value="Dhananjay" th:field="*{hoVaTen}"/>
+               </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+               <div class="form-group">
+                  <label>Giới tính</label>
+                  <div class="form-check form-check-inline">
+                     <input class="radio-custom" type="radio" name="gender" id="inlineRadio1" value="Nam"
+                            th:field="*{gioiTinh}">
+                     <label class="radio-custom-label" for="inlineRadio1">Nam</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                     <input class="radio-custom" type="radio" name="gender" id="inlineRadio2" value="Nữ"
+                            th:field="*{gioiTinh}">
+                     <label class="radio-custom-label" for="inlineRadio2">Nữ</label>
+                  </div>
+                  <div class="text-danger" th:errors="*{gioiTinh}"></div>
+               </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+               <div class="form-group">
+                  <label>Ngày sinh</label>
+                  <input type="date" class="form-control rounded" th:field="*{ngaySinh}">
+                  <span class="text-danger" th:errors="*{ngaySinh}"></span>
+               </div>
+            </div>
+
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+               <div class="form-group">
+                  <button type="button" class="btn btn-main1 rounded">Lưu thay đổi</button>
+               </div>
+            </div>
+
+         </form>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+         <div class="row">
+            <!--            số điện thoại và email-->
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+               <p class="font-weight-bold">Số điện thoại và Email</p>
+               <!--               SDT-->
+               <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex">
+                     <p class="mr-1"><i class="fi fi-rr-phone-call" style="font-size: 16px"></i></p>
+                     <p th:utext="'Số điện thoại &lt;br&gt;' + ${userDetails.SDT}">User Phone</p>
+                     <!--                     <p>Số điện thoại <br> [[${userDetails.SDT}]]</p>-->
+                  </div>
+                  <div>
+                     <button type="button" class="btn btn-sm btn-outline-main1 rounded" data-toggle="modal"
+                             data-target="#update-phone">Cập nhật
+                     </button>
+                  </div>
+               </div>
+               <!--               email-->
+               <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex">
+                     <p class="mr-1"><i class="fi fi-rr-envelope" style="font-size: 16px"></i></p>
+                     <p th:utext="'Email &lt;br&gt;' + ${userDetails.email}">User Email</p>
+                  </div>
+                  <div>
+                     <button type="button" class="btn btn-sm btn-outline-main1 rounded" data-toggle="modal"
+                             data-target="#update-email">Cập nhật
+                     </button>
+                  </div>
+               </div>
+            </div>
+            <!--            bảo mật-->
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+               <p class="font-weight-bold">Bảo mật</p>
+               <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex">
+                     <p class="mr-1"><i class="fi fi-rr-lock" style="font-size: 16px"></i></p>
+                     <p> Đổi mật khẩu </p>
+                     <!--                     <p>Số điện thoại <br> [[${userDetails.SDT}]]</p>-->
+                  </div>
+                  <div>
+                     <button type="button" class="btn btn-sm btn-outline-main1 rounded" data-toggle="modal"
+                             data-target="#update-password">Cập nhật
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- row -->
+   <!-- modal update sdt-->
+   <div class="modal md-modal fade" id="update-phone" tabindex="-1" role="dialog" aria-labelledby="update-phone"
+        aria-hidden="true">
+      <div class="modal-dialog login-pop-form" role="document">
+         <div class="modal-content">
+            <div class="modal-headers">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <!--                  <span class="ti-close"></span>-->
+                  <i class="fi fi-rr-cross-small" style="font-size: 16px"></i>
+               </button>
+            </div>
+            <div class="modal-body">
+               <p class="font-weight-bold">Cập nhật số điện thoại</p>
+               <form action="/user/update" class="row m-0" th:object="${userDetails}">
+                  <input type="hidden" th:field="*{id}">
+                  <input type="hidden" th:field="*{ma}">
+                  <input type="hidden" th:field="*{hoVaTen}">
+                  <input type="hidden" th:field="*{gioiTinh}">
+                  <input type="hidden" th:field="*{ngaySinh}">
+                  <input type="hidden" th:field="*{email}">
+                  <input type="hidden" th:field="*{matKhau}">
+
+
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                     <div class="form-group">
+                        <label>Số điện thoại</label>
+                        <input type="text" class="form-control rounded" placeholder="VD: 0xxxxxxxxx" th:field="*{SDT}"/>
+                     </div>
+                     <span class="text-danger" th:errors="*{SDT}"></span>
+                  </div>
+
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                     <div class="form-group text-center">
+                        <button type="submit" class="btn btn-main1 rounded">Lưu thay đổi</button>
+                     </div>
+                  </div>
+
+               </form>
+            </div>
+         </div>
+
+      </div>
+
+   </div>
+   <!-- modal update sdt-->
+   <div class="modal fade md-modal" id="update-email" tabindex="-1" role="dialog" aria-labelledby="update-email"
+        aria-hidden="true">
+      <div class="modal-dialog modal-sm login-pop-form" role="document">
+         <div class="modal-content">
+            <div class="modal-headers">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <i class="fi fi-rr-cross-small" style="font-size: 16px"></i>
+               </button>
+            </div>
+            <div class="modal-body">
+               <p class="font-weight-bold">Cập nhật Email</p>
+               <form action="/user/update" class="row m-0" th:object="${userDetails}">
+                  <input type="hidden" th:field="*{id}">
+                  <input type="hidden" th:field="*{ma}">
+                  <input type="hidden" th:field="*{hoVaTen}">
+                  <input type="hidden" th:field="*{gioiTinh}">
+                  <input type="hidden" th:field="*{ngaySinh}">
+                  <input type="hidden" th:field="*{email}">
+                  <input type="hidden" th:field="*{matKhau}">
+
+
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                     <div class="form-group">
+                        <label>Email *</label>
+                        <input type="text" class="form-control rounded" placeholder="VD: jonhdoe@example.com" th:field="*{email}"/>
+                     </div>
+                     <span class="text-danger" th:errors="*{email}"></span>
+                  </div>
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                     <div class="form-group text-center">
+                        <button type="submit" class="btn btn-main1 rounded">Lưu thay đổi</button>
+                     </div>
+                  </div>
+
+               </form>
+            </div>
+         </div>
+
+      </div>
+
+   </div>
+   <!-- modal update sdt-->
+   <div class="modal fade md-modal" id="update-password" tabindex="-1" role="dialog" aria-labelledby="update-password"
+        aria-hidden="true">
+      <div class="modal-dialog modal-sm login-pop-form" role="document">
+         <div class="modal-content">
+            <div class="modal-headers">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <i class="fi fi-rr-cross-small" style="font-size: 16px"></i>
+               </button>
+            </div>
+            <div class="modal-body">
+               <p class="font-weight-bold">Cập nhật mật khẩu</p>
+               <form action="/user/update" class="row m-0" th:object="${userDetails}">
+                  <input type="hidden" th:field="*{id}">
+                  <input type="hidden" th:field="*{ma}">
+                  <input type="hidden" th:field="*{hoVaTen}">
+                  <input type="hidden" th:field="*{gioiTinh}">
+                  <input type="hidden" th:field="*{ngaySinh}">
+                  <input type="hidden" th:field="*{SDT}">
+                  <input type="hidden" th:field="*{email}">
+
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                     <div class="form-group">
+                        <label>Mật khẩu hiện tại</label>
+                        <input type="text" class="form-control rounded" value="Current Password" th:field="*{matKhau}"/>
+                     </div>
+                  </div>
+
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                     <div class="form-group">
+                        <label>Mật khẩu mới</label>
+                        <input type="text" class="form-control rounded" value="New Password"/>
+                     </div>
+                  </div>
+
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                     <div class="form-group text-center">
+                        <button type="submit" class="btn btn-main1 rounded">Lưu thay đổi</button>
+                     </div>
+                  </div>
+
+               </form>
+            </div>
+         </div>
+
+      </div>
+
+   </div>
+</div>
+</body>
+</html>

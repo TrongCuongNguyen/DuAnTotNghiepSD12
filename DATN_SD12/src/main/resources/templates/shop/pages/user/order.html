@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{shop/layout/user-layout}">
+<head>
+    <style>
+        .badges {
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .bg-lighthuy {
+            background-color: #FA0043; /* Màu cam nhạt */
+            color: #fff; /* Màu chữ trắng */
+        }
+
+        .bg-lightblue {
+            background-color: #0dcaf0; /* Màu xanh nhạt */
+            color: #fff; /* Màu chữ đen */
+        }
+
+        .bg-lightyellow {
+            background-color: #f6de42; /* Màu xanh nhạt */
+            color: #fff; /* Màu chữ đen */
+        }
+
+        .bg-lightviolet {
+            background-color: #7353fc; /* Màu xanh nhạt */
+            color: #fff; /* Màu chữ đen */
+        }
+
+        .bg-lightgreen {
+            background-color: #6ef669; /* Màu xanh nhạt */
+            color: #fff; /* Màu chữ đen */
+        }
+        .bg-lightx{
+            background-color: #ffc9c9;
+            color: #f62222;
+        }
+
+
+    </style>
+    <title>User Order</title>
+    <!--   <link th:href="@{~/static/assets/css/styles.css}" rel="stylesheet">-->
+</head>
+<body>
+<div layout:fragment="content">
+    <!-- Single Order List -->
+    <div class="ord_list_wrap border mb-4 mfliud">
+        <div class="ord_list_head gray d-flex align-items-center justify-content-between px-3 py-3">
+            <div class="olh_flex">
+                <p class="m-0 p-0"><span class="text-muted">Order Number</span></p>
+                <h6 class="mb-0 ft-medium">#1250004123</h6>
+            </div>
+            <div class="olh_flex">
+                <a href="javascript:void(0);" class="btn btn-sm btn-dark">Track Order</a>
+            </div>
+        </div>
+
+
+        <!--                  ==================================================-->
+
+
+        <div class="ord_list_body text-left">
+            <!-- First Product -->
+            <div class="row align-items-center justify-content-center m-0 py-4 br-bottom"
+                 th:each="donHangChiTiet:${donHangChiTietList}">
+                <div class="col-xl-5 col-lg-5 col-md-5 col-12">
+                    <div class="cart_single d-flex align-items-start mfliud-bot">
+                        <div class="cart_selected_single_thumb">
+                            <a href="#"><img src="assets/img/product/4.jpg" width="75" class="img-fluid rounded" alt=""></a>
+                        </div>
+                        <div class="cart_single_caption pl-3">
+                            <p class="mb-0"><span class="text-muted small"
+                                                  th:text="${donHangChiTiet.sanPhamChiTiet.sanPham.danhMucSanPham.ten}"> </span>
+                            </p>
+                            <h4 class="product_title fs-sm ft-medium mb-1 lh-1">
+
+                                <a th:href="@{|/products/${donHangChiTiet.sanPhamChiTiet.sanPham.id}|}"
+                                   th:text="${donHangChiTiet.sanPhamChiTiet.sanPham.ten}"></a>
+                            </h4>
+                            <!--                                Thêm link đến oderdetail lấy id sanPham-->
+                            <p class="mb-2"><span class="text-dark medium"
+                                                  th:text="${donHangChiTiet.sanPhamChiTiet.kichCo.ten}"> </span>,
+                                <span class="text-dark medium"
+                                      th:text="${donHangChiTiet.sanPhamChiTiet.mauSac.ten}"> </span></p>
+                            <h4 class="fs-sm ft-bold mb-0 lh-1" th:text="${donHangChiTiet.donHang.tongTien}"></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-6">
+                    <p class="mb-1 p-0"><span class="text-muted">Trạng Thái</span></p>
+                    <div class="delv_status"><span
+                            th:switch="${donHangChiTiet.donHang.trangThai}">
+
+                                   <!-- 1: chua thanh toan, 2: da thanh toan, 3: dang van chuyen, 4: thanh cong, 0: huy bo-->
+
+                                    <span th:case="0" class="badges bg-lighthuy">Đã Hủy</span>
+                                    <span th:case="1" class="badges bg-lightyellow">Chưa Thanh Toán</span>
+                                    <span th:case="2" class="badges bg-lightblue">Đã Thanh Toán</span>
+                                    <span th:case="3" class="badges bg-lightviolet">Đang Vận Chuyển</span>
+                                    <span th:case="4" class="badges bg-lightgreen">Thành Công</span>
+
+                                    <span th:case="5" class="badges bg-lightx">
+
+                                         <span th:if="${donHangChiTiet.donHang.trangThaiTraHang == 1}">Chờ Xác Nhận Trả hàng </span>
+                                         <span th:if="${donHangChiTiet.donHang.trangThaiTraHang == 2}">Đã xác nhận Hủy Đơn hàng</span>
+                                         <span th:if="${donHangChiTiet.donHang.trangThaiTraHang == 3}">Trả Hàng Thành Công</span>
+                                         <span th:if="${donHangChiTiet.donHang.trangThaiTraHang == 4}">Yêu Cầu Trả hàng Bị Từ chối </span>
+                                         <span th:case="*" class="badges bg-lightblack">***</span>
+
+                                    </span>
+
+                                    <span th:case="*" class="badges bg-lightblack">Trạng thái không hợp lệ</span>
+
+                              </span>
+
+                    </div>
+
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+                    <p class="mb-1 p-0"><span class="text-muted">Ngày Đặt Hàng </span></p>
+                    <h6 class="mb-0 ft-medium fs-sm" th:text="${donHangChiTiet.donHang.ngayDat}"></h6>
+
+
+                </div>
+                <div th:if="${donHangChiTiet.donHang.trangThai == 4}">
+                    <a class="btn btn-danger" th:href="@{'/admin/traHang/yeuCauTraHang/' + ${donHangChiTiet.donHang.id}}"
+                       type="button" data-toggle="tooltip"> Yêu cầu trả hàng
+                    </a>
+                </div>
+
+
+            </div>
+
+
+            <!--                  ==================================================-->
+
+
+        </div>
+
+</body>
+</html>

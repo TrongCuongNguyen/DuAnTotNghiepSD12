@@ -1,0 +1,137 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<header class="header header-light dark-text" th:fragment="header">
+   <div class="container">
+      <nav id="navigation" class="navigation navigation-landscape">
+         <div class="nav-header">
+<!--            <a class="nav-brand" th:href="@{/}">-->
+<!--               <img th:src="@{~/static/assets/shop/img/logo_XShop3.png}" class="logo" alt="Logo XShop"/>-->
+<!--            </a>-->
+            <div class="nav-toggle"></div>
+            <!-- Mobile Navigation -->
+            <div class="mobile_nav">
+               <ul>
+                  <li>
+                     <a href="#" onclick="openSearch()">
+                        <i class="lni lni-search-alt"></i>
+                     </a>
+                  </li>
+                  <li>
+                     <!--                  <a href="#" data-toggle="modal" data-target="#login">-->
+                     <!--                     <i class="lni lni-user"></i>-->
+                     <!--                  </a>-->
+<!--                     Doan menu mobile nay bi loi, chua fix duoc-->
+                     <a href="#">
+                        <i class="fi fi-rr-user" style="font-size: 17px"></i>
+                     </a>
+
+                     <ul class="nav-dropdown nav-submenu"
+                         th:if="${#authentication.principal == 'anonymousUser'}">
+                        <!--                     th:if="${isLogin!=true}"-->
+                        <!--                      sec:authorize="isAuthenticated()"-->
+                        <li><a th:href="@{/login}">Đăng nhập</a></li>
+                        <li><a th:href="@{/register}">Đăng ký</a></li>
+                     </ul>
+
+                     <ul class="nav-dropdown nav-submenu"
+                         th:if="${#authentication.principal != 'anonymousUser'}">
+                        <!--                      th:if="${isLogin==true}>-->
+                        <li><a th:href="@{|/user/${#authentication.name}/profile|}">Thông tin tài khoản</a></li>
+                        <li><a th:href="@{/logout}">Đăng xuất</a></li>
+                     </ul>
+                  </li>
+                  <li>
+                     <a href="#" onclick="openWishlist()">
+                        <i class="lni lni-heart"></i><span class="dn-counter">2</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" onclick="openCart()">
+                        <i class="lni lni-shopping-basket"></i><span class="dn-counter">0</span>
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+
+         <div class="nav-menus-wrapper" style="transition-property: none;">
+            <ul class="nav-menu">
+
+               <li><a th:href="@{/}">Trang chủ</a></li>
+               <!-- Lam mega menu se de nhin hon: de sau  -->
+               <li th:fragment="category(categoryList)" th:each="category:${categoryList}">
+                  <a th:href="@{|/category/${category.id}|}" th:text="${category.ten}" >Category Name</a>
+                  <ul class="nav-dropdown nav-submenu" th:if="${category.danhMucConList.size() > 0 }"> <!-- #lists.size(category.danhMucConList) > 0-->
+                     <li th:replace="~{this::category(${category.danhMucConList})}"></li>
+                  </ul>
+               </li>
+
+<!--               <li th:fragment="category(categoryList, aLevel)" th:each="category:${categoryList}" th:with="aLevel=0" th:if="${category.danhMucCha eq null || aLevel!=0}">-->
+<!--&lt;!&ndash;                   th:attr="|aLevel!=0?'th:if=|${aLevel!=0}':''|">&ndash;&gt;-->
+<!--&lt;!&ndash;                  th:with="aLevel=${aLevel!=0?aLevel:0}"&ndash;&gt;-->
+<!--                  <p th:text="${aLevel}"></p>-->
+<!--                  <a th:href="@{|/${category.id}|}" th:text="${category.ten}">Category Name</a>-->
+<!--                  <ul class="nav-dropdown nav-submenu" th:if="${category.danhMucConList.size() > 0 }"> &lt;!&ndash; #lists.size(category.danhMucConList) > 0&ndash;&gt;-->
+<!--                     <li th:with="" th:replace="this :: category (${category.danhMucConList}, ${aLevel+1})"></li>-->
+<!--                  </ul>-->
+<!--               </li>-->
+
+               <li><a href="javascript:void(0);">Thông tin</a>
+                  <ul class="nav-dropdown nav-submenu">
+                     <li><a th:href="@{/about-us}">Về chúng tôi</a></li>
+                     <li><a th:href="@{/contact}">Liên hệ</a></li>
+                     <li><a th:href="@{/faq}">Hỏi đáp</a></li>
+                  </ul>
+               </li>
+
+            </ul>
+
+            <ul class="nav-menu nav-menu-social align-to-right">
+               <li>
+                  <a href="#" onclick="openSearch()">
+                     <i class="fi fi-rr-search" style="font-size: 17px"></i>
+                  </a>
+               </li>
+               <li>
+                  <!--                  <a href="#" data-toggle="modal" data-target="#login">-->
+                  <!--                     <i class="lni lni-user"></i>-->
+                  <!--                  </a>-->
+                  <a href="#">
+                     <i class="fi fi-rr-user" style="font-size: 17px"></i>
+                  </a>
+
+                  <ul class="nav-dropdown nav-submenu"
+                      th:if="${#authentication.principal == 'anonymousUser'}">
+                     <!--                     th:if="${isLogin!=true}"-->
+                     <!--                      sec:authorize="isAuthenticated()"-->
+                     <li><a th:href="@{/login}">Đăng nhập</a></li>
+                     <li><a th:href="@{/register}">Đăng ký</a></li>
+                  </ul>
+
+                  <ul class="nav-dropdown nav-submenu"
+                      th:if="${#authentication.principal != 'anonymousUser'}">
+                     <!--                      th:if="${isLogin==true}>-->
+                     <li><a th:href="@{|/user/${#authentication.name}/profile|}">Thông tin tài khoản</a></li>
+                     <li><a th:href="@{/logout}">Đăng xuất</a></li>
+                  </ul>
+
+               </li>
+               <li>
+                  <a onclick="openWishlist()">
+                     <i class="fi fi-rr-heart" style="font-size: 17px"></i>
+                     <span class="dn-counter bg-info">2</span>
+                  </a>
+               </li>
+               <li>
+                  <a onclick="openCart()">
+                     <i class="fi fi-rr-shopping-cart" style="font-size: 17px"></i>
+                     <span class="dn-counter cart-quantity theme-bg">3</span>
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </nav>
+   </div>
+</header>
+<!-- End Navigation -->
+</html>
+

@@ -1,0 +1,157 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- ============================ Footer Start ================================== -->
+<aside class="sidebar" id="sidebar" th:fragment="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li class="active">
+                    <a th:href="@{/admin/}">
+                        <img src="assets/img/icons/dashboard.svg" alt="img"><span> Dashboard</span>
+                    </a>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="assets/img/icons/product.svg" alt="img"><span>
+                           Quản Lý Sản Phẩm</span> <span class="menu-arrow"></span></a>
+               <ul>
+                  <li><a th:href="@{/admin/product}">Danh sách sản phẩm</a></li>
+                  <li><a th:href="@{/admin/addProduct}">Thêm hoặc sửa sản phẩm</a></li>
+                  <li><a th:href="@{/admin/categories}">Danh sách danh mục</a></li>
+                  <li><a th:href="@{/admin/addcategory}">Thêm hoặc sửa danh mục</a></li>
+                  <li><a th:href="@{/admin/brand/getAllBrand}">Danh sách thương hiệu</a></li>
+                  <li><a th:href="@{/admin/brand/addBrandFrom}">Thêm hoặc sửa thương hiệu</a></li>
+                  <li><a th:href="@{/admin/size/getAllSize}">Danh sách kích cỡ</a></li>
+                  <li><a th:href="@{/admin/size/addSizeFrom}">Thêm hoặc sửa kích cỡ</a></li>
+                  <li><a th:href="@{/admin/promotion/getAllPromotion}">Danh sách khuyến mại</a></li>
+                  <li><a th:href="@{/admin/promotion/addPromotionFrom}">Thêm hoặc sửa khuyến mại</a></li>
+                  <li><a th:href="@{/admin/detailedPromotions/getAllDetailedPromotions}">Khuyến Mại Chi Tiết</a></li>
+<!--                  <li><a th:href="@{/admin/brands}">Danh sách thương hiệu</a></li>-->
+<!--                  <li><a th:href="@{/ admin/addbrand}">Thêm hoặc sửa thương hiệu</a></li>-->
+<!--                  <li><a href="#">Kích cỡ, màu sắc tương tự như thương hiệu</a></li>-->
+                   <li><a th:href="@{/admin/color/getAllColor}">Danh sách Màu Sắc</a></li>
+                   <li><a th:href="@{/admin/color/addColorFrom}">Thêm hoặc sửa màu Màu Sắc</a></li>
+               </ul>
+            </li>
+            <li class="submenu">
+               <a href="javascript:void(0);"><img src="assets/img/icons/sales1.svg" alt="img"><span> Bán Hàng</span>
+                  <span class="menu-arrow"></span></a>
+               <ul>
+                  <li><a href="saleslist.html">Sales List</a></li>
+                  <li><a th:href="@{/admin/pos}">POS</a></li>
+                  <li><a href="pos.html">New Sales</a></li>
+                  <li><a href="salesreturnlists.html">Sales Return List</a></li>
+                  <li><a href="createsalesreturns.html">New Sales Return</a></li>
+
+
+               </ul>
+            </li>
+            <li class="submenu">
+               <a href="javascript:void(0);"><img src="assets/img/icons/purchase1.svg" alt="img"><span>
+                           Quản Lý Đơn Hàng</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a th:href="@{/admin/orders}">Danh sách đơn hàng</a></li>
+                        <li><a th:href="@{/admin/addorder}">Thêm hoặc sửa đơn hàng</a></li>
+                        <li><a th:href="@{/admin/returns}">Trả hàng</a></li>
+                        <!--                  <li><a th:href="@{/admin/orderstml}">Import Purchase</a></li>-->
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="assets/img/icons/expense1.svg" alt="img"><span>
+                           Expense</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="expenselist.html">Expense List</a></li>
+                        <li><a href="createexpense.html">Add Expense</a></li>
+                        <li><a href="expensecategory.html">Expense Category</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="assets/img/icons/quotation1.svg" alt="img"><span>
+                           Quotation</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="quotationList.html">Quotation List</a></li>
+                        <li><a href="addquotation.html">Add Quotation</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="assets/img/icons/transfer1.svg" alt="img"><span>
+                           Transfer</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="transferlist.html">Transfer List</a></li>
+                        <li><a href="addtransfer.html">Add Transfer </a></li>
+                        <li><a href="importtransfer.html">Import Transfer </a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="assets/img/icons/return1.svg" alt="img"><span>
+                           Quản Lý Trả Hàng</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="salesreturnlist.html">Sales Return List</a></li>
+                        <li><a href="createsalesreturn.html">Add Sales Return </a></li>
+                        <li><a href="purchasereturnlist.html">Purchase Return List</a></li>
+                        <li><a href="createpurchasereturn.html">Add Purchase Return </a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="assets/img/icons/users1.svg" alt="img"><span> Quản Lý Người Dùng</span>
+                        <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a th:href="@{/admin/customers}">Danh sách khách hàng</a></li>
+                        <li><a th:href="@{/admin/addcustomer}">Thêm hoặc sửa Khách hàng  </a></li>
+                        <!--                  <li><a th:href="@{/admin/supplierlist.html">Supplier List</a></li>-->
+                        <!--                  <li><a th:href="@{/admin/addsupplier.html">Add Supplier </a></li>-->
+                        <li><a th:href="@{/admin/users}">Danh sách người dùng</a></li>
+                        <li><a th:href="@{/admin/adduser}">Thêm hoặc sửa người dùng</a></li>
+                        <li><a th:href="@{/admin/staffs}">Danh sách nhân viên</a></li>
+                        <li><a th:href="@{/admin/addstaff}">Thêm hoặc sửa nhân viên</a></li>
+                        <li><a th:href="@{/admin/positions}">Danh sách chức vụ</a></li>
+                        <li><a th:href="@{/admin/addposition}">Thêm hoặc sửa chức vụ</a></li>
+                        <!--                  <li><a th:href="@{/admin/storelist.html">Store List</a></li>-->
+                        <!--                  <li><a th:href="@{/admin/addstore.html">Add Store</a></li>-->
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="assets/img/icons/quotation1.svg" alt="img"><span>
+                           Phương Thức Thanh Toán</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a th:href="@{/admin/payments}">Danh sách thanh toán</a></li>
+                        <li><a th:href="@{addpayment}">Thêm hoặc sửa thanh toán</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="assets/img/icons/time.svg" alt="img"><span> Report</span>
+                        <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="purchaseorderreport.html">Purchase order report</a></li>
+                        <li><a href="inventoryreport.html">Inventory Report</a></li>
+                        <li><a href="salesreport.html">Sales Report</a></li>
+                        <li><a href="invoicereport.html">Invoice Report</a></li>
+                        <li><a href="purchasereport.html">Purchase Report</a></li>
+                        <li><a href="supplierreport.html">Supplier Report</a></li>
+                        <li><a href="customerreport.html">Customer Report</a></li>
+                    </ul>
+                </li>
+                <!--            <li class="submenu">-->
+                <!--               <a href="javascript:void(0);"><img src="assets/img/icons/users1.svg" alt="img"><span> Users</span>-->
+                <!--                  <span class="menu-arrow"></span></a>-->
+                <!--               <ul>-->
+                <!--                  <li><a href="newuser.html">New User </a></li>-->
+                <!--                  <li><a href="userlists.html">Users List</a></li>-->
+                <!--               </ul>-->
+                <!--            </li>-->
+                <li class="submenu">
+                    <a href="javascript:void(0);"><img src="assets/img/icons/settings.svg" alt="img"><span>
+                           Settings</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="generalsettings.html">General Settings</a></li>
+                        <li><a href="emailsettings.html">Email Settings</a></li>
+                        <li><a href="paymentsettings.html">Payment Settings</a></li>
+                        <li><a href="currencysettings.html">Currency Settings</a></li>
+                        <li><a href="grouppermissions.html">Group Permissions</a></li>
+                        <li><a href="taxrates.html">Tax Rates</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</aside>
+<!-- ============================ Footer End ================================== -->
+</html>

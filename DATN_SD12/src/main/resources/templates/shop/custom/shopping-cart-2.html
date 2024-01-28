@@ -1,0 +1,275 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<!--Shopping Cart Container -->
+<!--Template-->
+<div class="row justify-content-between shopping_cart_container" th:fragment="shopping_cart_template_2">
+   <!-- Cart Empty-->
+   <div class="col-12">
+      <div class="cart_empty p-3 bg-white rounded">
+         <div class="d-flex justify-content-center align-items-center">
+            <img th:src="@{~/static/assets/shop/img/cart_empty.png}" style="width: 150px">
+         </div>
+         <div class="p-3">
+            <h4 class="text-center fs-sm ft-medium">Không có sản phẩm nào!</h4>
+            <p class="text-center">Hãy tham khảo thêm các sản phẩm khác ở cửa hàng nhé</p>
+         </div>
+         <div class="d-flex justify-content-center align-items-center">
+            <div style="width: 280px;">
+               <a th:href="@{/}" type="button" class="btn d-block btn-main1 rounded">Về trang chủ</a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!--  Cart NotEmpty-->
+   <div class="col-12 col-lg-8 col-md-12"> <!-- padding right hơi to -->
+      <div class="table-responsive bg-white rounded mb-3">
+         <table class="table table-borderless cart">
+            <thead>
+            <tr>
+               <th><input type="checkbox"></th>
+               <th nowrap="true">Sản phẩm</th>
+               <th nowrap="true">Đơn giá</th>
+               <th nowrap="true">Số lượng</th>
+               <th nowrap="true">Thành tiền</th>
+               <th>
+                  <a href="#" class="remove-product">
+                     <i class="fi fi-rr-trash" style="font-size: 16px"></i>
+                  </a>
+               </th>
+            </tr>
+            </thead>
+            <tbody class="shopping_cart_items">
+            <!-- Single Item-->
+            <tr class="cart-item">
+               <td><input type="checkbox"></td>
+               <td>
+                  <div class="d-flex align-items-center justify-content-between">
+                     <div class="">
+                        <!-- Image -->
+                        <a href="#">
+                           <img class="rounded" th:src="@{~/static/assets/shop/img/product/7.jpg}" alt="..." style="width: 80px">
+                        </a>
+                     </div>
+                     <div class="cart_single_caption pl-2">
+                        <h4 class="product_title fs-md ft-medium mb-1 lh-1">
+                           <a href="#">Áo Polo Nữ Mắt Chim In Thuyền Phối Màu</a>
+                        </h4>
+                        <p class="mb-1 lh-1"><span class="text-dark">Size: 36</span></p>
+                        <p class="mb-3 lh-1"><span class="text-dark">Color: Red</span></p>
+                     </div>
+                  </div>
+               </td>
+               <td nowrap="true"><h4 class="fs-md ft-medium m-0 lh-1 price">129.000<sup>₫</sup></h4></td>
+               <td>
+                  <div class="input-group input-group-sm">
+                     <button class="btn btn-outline-main1 rounded-left minus" type="button">
+                        <i class="fi fi-rr-minus-small"></i>
+                     </button>
+                     <input type="text" class="form-control quantity text-center" value="1">
+                     <button class="btn btn-outline-main1 rounded-right add" type="button">
+                        <i class="fi fi-rr-plus-small"></i>
+                     </button>
+                  </div>
+               </td>
+               <td nowrap="true"><h4 class="fs-md text-danger ft-medium m-0 lh-1 sub-total-price">129.000<sup>₫</sup></h4>
+               </td>
+               <td>
+                  <a href="#" class="remove-product">
+                     <i class="fi fi-rr-trash" style="font-size: 16px"></i>
+                  </a>
+               </td>
+            </tr>
+            </tbody>
+         </table>
+      </div>
+      <!--Sản phẩm gợi ý-->
+      <!--               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">-->
+      <!--                  <div class="slide_items slick-initialized slick-slider">-->
+      <!--                     <button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous"-->
+      <!--                             role="button" style="">Previous-->
+      <!--                     </button>-->
+      <!--                     &lt;!&ndash; Single Item&ndash;&gt;-->
+
+      <!--                     <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next"-->
+      <!--                             role="button" style="">Next-->
+      <!--                     </button>-->
+      <!--                  </div>-->
+      <!--               </div>-->
+      <!--               <div class="row align-items-end justify-content-between mb-10 mb-md-0">-->
+      <!--                  <div class="col-12 col-md-7">-->
+      <!--                     &lt;!&ndash; Coupon &ndash;&gt;-->
+      <!--                     <form class="mb-7 mb-md-0">-->
+      <!--                        <label class="fs-sm ft-medium text-dark">Coupon code:</label>-->
+      <!--                        <div class="row form-row">-->
+      <!--                           <div class="col">-->
+      <!--                              <input class="form-control" type="text" placeholder="Enter coupon code*">-->
+      <!--                           </div>-->
+      <!--                           <div class="col-auto">-->
+      <!--                              <button class="btn btn-dark" type="submit">Apply</button>-->
+      <!--                           </div>-->
+      <!--                        </div>-->
+      <!--                     </form>-->
+      <!--                  </div>-->
+      <!--                  <div class="col-12 col-md-auto mfliud">-->
+      <!--                     <button class="btn stretched-link borders">Update Cart</button>-->
+      <!--                  </div>-->
+      <!--               </div>-->
+   </div>
+
+   <div class="col-12 col-md-12 col-lg-4">
+      <div class="p-3 bg-white rounded">
+         <!-- Coupon -->
+         <!--                  <form class="mb-7 mb-md-0">-->
+         <!--                     <label class="fs-sm ft-medium text-dark">Coupon code:</label>-->
+         <!--                     <div class="row form-row">-->
+         <!--                        <div class="col">-->
+         <!--                           <input class="form-control" type="text" placeholder="Enter coupon code*">-->
+         <!--                        </div>-->
+         <!--                        <div class="col-auto">-->
+         <!--                           <button class="btn btn-dark" type="submit">Apply</button>-->
+         <!--                        </div>-->
+         <!--                     </div>-->
+         <!--                  </form>-->
+
+         <div class="cart_bill m-3">
+            <div class="br-bottom br-top py-2">
+               <div class="d-flex justify-content-between align-items-center my-1">
+                  <span>Tạm tính</span> <span class="ml-auto text-dark ft-medium">$98.12</span>
+               </div>
+               <div class="d-flex justify-content-between align-items-center my-1">
+                  <span>Phí giao hàng</span> <span class="ml-auto text-dark ft-medium">Miễn phí</span>
+               </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center pt-2">
+               <span>Tổng tiền</span> <span class="ml-auto text-danger fs-lg ft-medium">$98.12</span>
+            </div>
+         </div>
+
+         <a class="btn btn-block btn-main1 rounded mb-3" th:href="@{/checkout}">Thanh toán ngay</a>
+
+         <a class="btn-link text-dark ft-medium" th:href="@{/}">
+            <i class="ti-back-left mr-2"></i> Tiếp tục mua sắm
+         </a>
+      </div>
+   </div>
+
+</div>
+
+<!--Controller-->
+<div class="row justify-content-between shopping_cart_container" th:fragment="shopping_cart_controller_2" th:width="carts=${carts}">
+   <!-- Cart Empty-->
+   <div th:if="" class="col-12">
+      <div class="cart_empty p-3 bg-white rounded">
+         <div class="d-flex justify-content-center align-items-center">
+            <img th:src="@{~/static/assets/shop/img/cart_empty.png}" style="width: 150px">
+         </div>
+         <div class="p-3">
+            <h4 class="text-center fs-sm ft-medium">
+               Không có sản phẩm nào!
+            </h4>
+            <p class="text-center">Hãy tham khảo thêm các sản phẩm khác ở cửa hàng nhé</p>
+         </div>
+         <div class="d-flex justify-content-center align-items-center">
+            <div style="width: 280px;">
+               <a th:href="@{/}" type="button" class="btn d-block btn-main1 rounded">Về trang chủ</a>
+            </div>
+         </div>
+
+      </div>
+   </div>
+
+   <!--  Cart NotEmpty-->
+   <div class="col-12 col-lg-8 col-md-12"> <!-- padding right hơi to -->
+      <div class="table-responsive bg-white rounded mb-3">
+         <table class="table table-borderless cart">
+            <thead>
+            <tr>
+               <th><input type="checkbox"></th>
+               <th nowrap="true">Sản phẩm</th>
+               <th nowrap="true">Đơn giá</th>
+               <th nowrap="true">Số lượng</th>
+               <th nowrap="true">Thành tiền</th>
+               <th>
+                  <a href="#" class="remove-product">
+                     <i class="fi fi-rr-trash" style="font-size: 16px"></i>
+                  </a>
+               </th>
+            </tr>
+            </thead>
+            <tbody class="shopping_cart_items">
+            <!-- Single Item-->
+            <tr class="cart-item" th:each="item:${carts}">
+               <td><input type="checkbox"></td>
+               <td>
+                  <div class="d-flex align-items-center justify-content-between">
+                     <div class="">
+                        <!-- Image -->
+                        <a th:href="@{|/products/${item.id}|}">
+                           <img class="rounded" th:src="@{|${item.imageUrl}|}" alt="Product Image"
+                                style="width: 80px">
+                        </a>
+                     </div>
+                     <div class="cart_single_caption pl-2">
+                        <h4 class="product_title fs-md ft-medium mb-1 lh-1">
+                           <a th:href="@{|/products/${item.id}|}" th:text="${item.name}">Product Name</a>
+                        </h4>
+                        <p class="mb-1 lh-1"><span class="text-dark"
+                                                   th:text="'Size: '${item.size}">Size: 36</span></p>
+                        <p class="mb-3 lh-1"><span class="text-dark" th:text="'Color: '${item.color}">Color: Red</span>
+                        </p>
+                     </div>
+                  </div>
+               </td>
+               <td><h4 class="fs-md ft-medium m-0 lh-1 price" th:text="${item.price}">129000<sup>₫</sup></h4>
+               </td>
+               <td>
+                  <div class="input-group input-group-sm">
+                     <button class="btn btn-outline-main1 rounded-left minus" type="button">
+                        <i class="fi fi-rr-minus-small"></i>
+                     </button>
+                     <input type="text" class="form-control quantity text-center" th:value="${item.quantity}"
+                            value="1">
+                     <button class="btn btn-outline-main1 rounded-right add" type="button">
+                        <i class="fi fi-rr-plus-small"></i>
+                     </button>
+                  </div>
+               </td>
+               <td><h4 class="fs-md text-danger ft-medium m-0 lh-1 sub-total-price"
+                       th:text="${item.subTotalPrice}">129000<sup>₫</sup></h4>
+               </td>
+               <td>
+                  <a href="#" class="remove-product">
+                     <i class="fi fi-rr-trash" style="font-size: 16px"></i>
+                  </a>
+               </td>
+            </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+
+   <div class="col-12 col-md-12 col-lg-4">
+      <div class="p-3 bg-white rounded">
+
+         <div class="cart_bill m-3">
+            <div class="br-bottom br-top py-2">
+               <div class="d-flex justify-content-between align-items-center my-1">
+                  <span>Tạm tính</span> <span class="ml-auto text-dark ft-medium">$98.12</span>
+               </div>
+               <div class="d-flex justify-content-between align-items-center my-1">
+                  <span>Phí giao hàng</span> <span class="ml-auto text-dark ft-medium">Miễn phí</span>
+               </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center pt-2">
+               <span>Tổng tiền</span> <span class="ml-auto text-danger fs-lg ft-medium">$98.12</span>
+            </div>
+         </div>
+
+         <a class="btn btn-block btn-main1 rounded mb-3" th:href="@{/checkout}">Thanh toán ngay</a>
+
+         <a class="btn-link text-dark ft-medium" th:href="@{/}">
+            <i class="ti-back-left mr-2"></i> Tiếp tục mua sắm
+         </a>
+      </div>
+   </div>
+</div>
+</html>

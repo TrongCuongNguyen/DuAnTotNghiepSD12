@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/layout}">
+<head>
+   <meta charset="UTF-8">
+   <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+   <div class="content">
+      <div class="page-header">
+         <div class="page-title">
+            <h4>Payment Settings</h4>
+            <h6>Manage Payment Settings</h6>
+         </div>
+         <div class="page-btn">
+            <a class="btn btn-added" data-bs-toggle="modal" data-bs-target="#addpayment"><img
+                  src="assets/img/icons/plus.svg" alt="img" class="me-2">Add Payment Settings</a>
+         </div>
+      </div>
+
+      <div class="card">
+         <div class="card-body">
+            <div class="table-top">
+               <div class="search-set">
+                  <div class="search-input">
+                     <a class="btn btn-searchset"><img src="assets/img/icons/search-white.svg" alt="img"></a>
+                     <div id="DataTables_Table_0_filter" class="dataTables_filter"><label> <input type="search"
+                                                                                                  class="form-control form-control-sm"
+                                                                                                  placeholder="Search..."
+                                                                                                  aria-controls="DataTables_Table_0"></label>
+                     </div>
+                  </div>
+               </div>
+               <div class="wordset">
+                  <ul>
+                     <li>
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="pdf"
+                           aria-label="pdf"><img src="assets/img/icons/pdf.svg" alt="img"></a>
+                     </li>
+                     <li>
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="excel"
+                           aria-label="excel"><img src="assets/img/icons/excel.svg" alt="img"></a>
+                     </li>
+                     <li>
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="print"
+                           aria-label="print"><img src="assets/img/icons/printer.svg" alt="img"></a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="table-responsive">
+               <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                  <table class="table datanew dataTable no-footer" id="DataTables_Table_0" role="grid"
+                         aria-describedby="DataTables_Table_0_info">
+                     <thead>
+                     <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                            aria-sort="ascending" aria-label="
+
+
+
+
+: activate to sort column descending" style="width: 164.613px;">
+                           <label class="checkboxs">
+                              <input type="checkbox">
+                              <span class="checkmarks"></span>
+                           </label>
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                            aria-label="Payment Type Name: activate to sort column ascending" style="width: 428.575px;">
+                           Payment Type Name
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                            aria-label="Status: activate to sort column ascending" style="width: 181.4px;">Status
+                        </th>
+                        <th class="text-end sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                            colspan="1" aria-label="Action: activate to sort column ascending"
+                            style="width: 221.012px;">Action
+                        </th>
+                     </tr>
+                     </thead>
+                     <tbody>
+
+
+                     <tr class="odd">
+                        <td class="sorting_1">
+                           <label class="checkboxs">
+                              <input type="checkbox">
+                              <span class="checkmarks"></span>
+                           </label>
+                        </td>
+                        <td>Cash</td>
+                        <td>
+                           <div class="status-toggle d-flex justify-content-between align-items-center">
+                              <input type="checkbox" id="user1" class="check" checked="">
+                              <label for="user1" class="checktoggle">checkbox</label>
+                           </div>
+                        </td>
+                        <td class="text-end">
+                           <a class="me-3" href="javascript:void(0);" data-bs-toggle="modal"
+                              data-bs-target="#editpayment">
+                              <img src="assets/img/icons/edit.svg" alt="img">
+                           </a>
+                           <a class="me-3 confirm-text" href="javascript:void(0);">
+                              <img src="assets/img/icons/delete.svg" alt="img">
+                           </a>
+                        </td>
+                     </tr>
+                     <tr class="even">
+                        <td class="sorting_1">
+                           <label class="checkboxs">
+                              <input type="checkbox">
+                              <span class="checkmarks"></span>
+                           </label>
+                        </td>
+                        <td>Card</td>
+                        <td>
+                           <div class="status-toggle d-flex justify-content-between align-items-center">
+                              <input type="checkbox" id="user2" class="check">
+                              <label for="user2" class="checktoggle">checkbox</label>
+                           </div>
+                        </td>
+                        <td class="text-end">
+                           <a class="me-3" href="javascript:void(0);" data-bs-toggle="modal"
+                              data-bs-target="#editpayment">
+                              <img src="assets/img/icons/edit.svg" alt="img">
+                           </a>
+                           <a class="me-3 confirm-text" href="javascript:void(0);">
+                              <img src="assets/img/icons/delete.svg" alt="img">
+                           </a>
+                        </td>
+                     </tr>
+                     <tr class="odd">
+                        <td class="sorting_1">
+                           <label class="checkboxs">
+                              <input type="checkbox">
+                              <span class="checkmarks"></span>
+                           </label>
+                        </td>
+                        <td>Credit</td>
+                        <td>
+                           <div class="status-toggle d-flex justify-content-between align-items-center">
+                              <input type="checkbox" id="user3" class="check" checked="">
+                              <label for="user3" class="checktoggle">checkbox</label>
+                           </div>
+                        </td>
+                        <td class="text-end">
+                           <a class="me-3" href="javascript:void(0);" data-bs-toggle="modal"
+                              data-bs-target="#editpayment">
+                              <img src="assets/img/icons/edit.svg" alt="img">
+                           </a>
+                           <a class="me-3 confirm-text" href="javascript:void(0);">
+                              <img src="assets/img/icons/delete.svg" alt="img">
+                           </a>
+                        </td>
+                     </tr>
+                     </tbody>
+                  </table>
+                  <div class="dataTables_length" id="DataTables_Table_0_length"><label><select
+                        name="DataTables_Table_0_length" aria-controls="DataTables_Table_0"
+                        class="custom-select custom-select-sm form-control form-control-sm">
+                     <option value="10">10</option>
+                     <option value="25">25</option>
+                     <option value="50">50</option>
+                     <option value="100">100</option>
+                  </select></label></div>
+                  <div class="dataTables_paginate paging_numbers" id="DataTables_Table_0_paginate">
+                     <ul class="pagination">
+                        <li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0"
+                                                                        data-dt-idx="0" tabindex="0"
+                                                                        class="page-link">1</a></li>
+                     </ul>
+                  </div>
+                  <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">1 - 3 of 3
+                     items
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="content">
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Product Edit Category</h4>
+                <h6>Edit a product Category</h6>
+            </div>
+        </div>
+
+        <div th:if="${messeger != null}" class="alert alert-info">
+            <p th:text="${messeger}"></p>
+        </div>
+
+
+        <form th:object="${sanPhamYeuThich}"
+              th:action="${sanPhamYeuThich.id != null ? '/admin/sanPhamYeuThich/update/' + sanPhamYeuThich.id : '/admin/sanPhamYeuThich/create'}"
+              method="post" class="container mt-5">
+
+            <div class="form-group">
+                <label for="khachHang">Danh Sách Khách Hàng:</label>
+                <select id="khachHang" name="khachHang.id" th:field="*{khachHang.id}" class="form-control">
+                    <option value="">Chọn Khách Hàng</option>
+                    <option th:each="khachHang : ${khachHangList}" th:value="${khachHang.id}"
+                            th:text="${khachHang.hoVaTen}"
+                            th:selected="${khachHang.id == (sanPhamYeuThich.khachHang != null ? sanPhamYeuThich.khachHang.id : null)}"></option>
+                </select>
+            </div>
+            <br>
+            <th:errors path="khachHang"></th:errors>
+
+
+            <div class="form-group">
+                <label for="sanPham">Danh Sách Khách Hàng:</label>
+                <select id="sanPham" name="sanPham.id" th:field="*{sanPham.id}" class="form-control">
+                    <option value="">Chọn Sản Phẩm</option>
+                    <option th:each="sanPham : ${sanPhamList}" th:value="${sanPham.id}" th:text="${sanPham.ten}"
+                            th:selected="${sanPham.id == (sanPhamYeuThich.sanPham != null ? sanPhamYeuThich.sanPham.id : null)}"></option>
+                </select>
+            </div>
+            <br>
+            <th:errors path="sanPhamYeuThich"></th:errors>
+
+            <button type="submit" class="btn btn-primary">Lưu</button>
+
+
+        </form>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>

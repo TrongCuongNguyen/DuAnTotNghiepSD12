@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/layout}">
+<head>
+   <meta charset="UTF-8">
+   <title>Title</title>
+</head>
+<body>
+  <div layout:fragment="content">
+     <div class="content">
+        <div class="page-header">
+           <div class="page-title">
+              <h4>User List</h4>
+              <h6>Manage your User</h6>
+           </div>
+           <div class="page-btn">
+              <a href="adduser.html" class="btn btn-added"><img src="assets/img/icons/plus.svg" alt="img" class="me-2">Add User</a>
+           </div>
+        </div>
+
+        <div class="card">
+           <div class="card-body">
+              <div class="table-top">
+                 <div class="search-set">
+                    <div class="search-path">
+                       <a class="btn btn-filter" id="filter_search">
+                          <img src="assets/img/icons/filter.svg" alt="img">
+                          <span><img src="assets/img/icons/closes.svg" alt="img"></span>
+                       </a>
+                    </div>
+                    <div class="search-input">
+                       <a class="btn btn-searchset">
+                          <img src="assets/img/icons/search-white.svg" alt="img">
+                       </a>
+                       <div id="DataTables_Table_0_filter" class="dataTables_filter"><label> <input type="search" class="form-control form-control-sm" placeholder="Search..." aria-controls="DataTables_Table_0"></label></div></div>
+                 </div>
+                 <div class="wordset">
+                    <ul>
+                       <li>
+                          <a data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="pdf" aria-label="pdf"><img src="assets/img/icons/pdf.svg" alt="img"></a>
+                       </li>
+                       <li>
+                          <a data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="excel" aria-label="excel"><img src="assets/img/icons/excel.svg" alt="img"></a>
+                       </li>
+                       <li>
+                          <a data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="print" aria-label="print"><img src="assets/img/icons/printer.svg" alt="img"></a>
+                       </li>
+                    </ul>
+                 </div>
+              </div>
+
+              <div class="card" id="filter_inputs">
+                 <div class="card-body pb-0">
+                    <div class="row">
+                       <div class="col-lg-2 col-sm-6 col-12">
+                          <div class="form-group">
+                             <input type="text" placeholder="Enter User Name">
+                          </div>
+                       </div>
+                       <div class="col-lg-2 col-sm-6 col-12">
+                          <div class="form-group">
+                             <input type="text" placeholder="Enter Phone">
+                          </div>
+                       </div>
+                       <div class="col-lg-2 col-sm-6 col-12">
+                          <div class="form-group">
+                             <input type="text" placeholder="Enter Email">
+                          </div>
+                       </div>
+                       <div class="col-lg-2 col-sm-6 col-12">
+                          <div class="form-group">
+                             <select class="select select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                <option data-select2-id="3">Disable</option>
+                                <option>Enable</option>
+                             </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="2" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-9b9e-container"><span class="select2-selection__rendered" id="select2-9b9e-container" role="textbox" aria-readonly="true" title="Disable">Disable</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                          </div>
+                       </div>
+                       <div class="col-lg-1 col-sm-6 col-12 ms-auto">
+                          <div class="form-group">
+                             <a class="btn btn-filters ms-auto"><img src="assets/img/icons/search-whites.svg" alt="img"></a>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+
+              <div class="table-responsive">
+                 <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><table class="table datanew dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                    <thead>
+                    <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
+
+
+
+
+: activate to sort column descending" style="width: 54.875px;">
+                       <label class="checkboxs">
+                          <input type="checkbox">
+                          <span class="checkmarks"></span>
+                       </label>
+                    </th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Profile: activate to sort column ascending" style="width: 63.35px;">Profile</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="First name : activate to sort column ascending" style="width: 95.925px;">First name </th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Last name : activate to sort column ascending" style="width: 94.075px;">Last name </th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="User name : activate to sort column ascending" style="width: 104.463px;">User name </th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Phone: activate to sort column ascending" style="width: 112.812px;">Phone</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="email: activate to sort column ascending" style="width: 121.55px;">email</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 62.6625px;">Status</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 81.0875px;">Action</th></tr>
+                    </thead>
+                    <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <tr class="odd">
+                       <td class="sorting_1">
+                          <label class="checkboxs">
+                             <input type="checkbox">
+                             <span class="checkmarks"></span>
+                          </label>
+                       </td>
+                       <td class="productimgname">
+                          <a href="javascript:void(0);" class="product-img">
+                             <img src="assets/img/customer/customer1.jpg" alt="product">
+                          </a>
+                       </td>
+                       <td>Thomas</td>
+                       <td>Thomas </td>
+                       <td>Thomas21 </td>
+                       <td>+12163547758 </td>
+                       <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="42362a2d2f233102273a232f322e276c212d2f">[email&nbsp;protected]</a></td>
+                       <td>
+                          <div class="status-toggle d-flex justify-content-between align-items-center">
+                             <input type="checkbox" id="user1" class="check">
+                             <label for="user1" class="checktoggle">checkbox</label>
+                          </div>
+                       </td>
+                       <td>
+                          <a class="me-3" href="edituser.html">
+                             <img src="assets/img/icons/edit.svg" alt="img">
+                          </a>
+                          <a class="me-3 confirm-text" href="javascript:void(0);">
+                             <img src="assets/img/icons/delete.svg" alt="img">
+                          </a>
+                       </td>
+                    </tr><tr class="even">
+                       <td class="sorting_1">
+                          <label class="checkboxs">
+                             <input type="checkbox">
+                             <span class="checkmarks"></span>
+                          </label>
+                       </td>
+                       <td class="productimgname">
+                          <a href="javascript:void(0);" class="product-img">
+                             <img src="assets/img/customer/customer2.jpg" alt="product">
+                          </a>
+                       </td>
+                       <td>Benjamin</td>
+                       <td>Franklin </td>
+                       <td>504Benjamin </td>
+                       <td>123-456-888</td>
+                       <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e685939592898b8394a6839e878b968a83c885898b">[email&nbsp;protected]</a></td>
+                       <td>
+                          <div class="status-toggle d-flex justify-content-between align-items-center">
+                             <input type="checkbox" id="user2" class="check" checked="">
+                             <label for="user2" class="checktoggle">checkbox</label>
+                          </div>
+                       </td>
+                       <td>
+                          <a class="me-3" href="edituser.html">
+                             <img src="assets/img/icons/edit.svg" alt="img">
+                          </a>
+                          <a class="me-3 confirm-text" href="javascript:void(0);">
+                             <img src="assets/img/icons/delete.svg" alt="img">
+                          </a>
+                       </td>
+                    </tr><tr class="odd">
+                       <td class="sorting_1">
+                          <label class="checkboxs">
+                             <input type="checkbox">
+                             <span class="checkmarks"></span>
+                          </label>
+                       </td>
+                       <td class="productimgname">
+                          <a href="javascript:void(0);" class="product-img">
+                             <img src="assets/img/customer/customer3.jpg" alt="product">
+                          </a>
+                       </td>
+                       <td>James</td>
+                       <td>James </td>
+                       <td>James 524 </td>
+                       <td>+12163547758 </td>
+                       <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ef4fff3fbeddefbe6fff3eef2fbb0fdf1f3">[email&nbsp;protected]</a></td>
+                       <td>
+                          <div class="status-toggle d-flex justify-content-between align-items-center">
+                             <input type="checkbox" id="user3" class="check" checked="">
+                             <label for="user3" class="checktoggle">checkbox</label>
+                          </div>
+                       </td>
+                       <td>
+                          <a class="me-3" href="edituser.html">
+                             <img src="assets/img/icons/edit.svg" alt="img">
+                          </a>
+                          <a class="me-3 confirm-text" href="javascript:void(0);">
+                             <img src="assets/img/icons/delete.svg" alt="img">
+                          </a>
+                       </td>
+                    </tr><tr class="even">
+                       <td class="sorting_1">
+                          <label class="checkboxs">
+                             <input type="checkbox">
+                             <span class="checkmarks"></span>
+                          </label>
+                       </td>
+                       <td class="productimgname">
+                          <a href="javascript:void(0);" class="product-img">
+                             <img src="assets/img/customer/customer4.jpg" alt="product">
+                          </a>
+                       </td>
+                       <td>Bruklin</td>
+                       <td>Bruklin </td>
+                       <td>Bruklin2022</td>
+                       <td>123-456-888</td>
+                       <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="781a0a0d13141116381d00191508141d561b1715">[email&nbsp;protected]</a></td>
+                       <td>
+                          <div class="status-toggle d-flex justify-content-between align-items-center">
+                             <input type="checkbox" id="user4" class="check" checked="">
+                             <label for="user4" class="checktoggle">checkbox</label>
+                          </div>
+                       </td>
+                       <td>
+                          <a class="me-3" href="edituser.html">
+                             <img src="assets/img/icons/edit.svg" alt="img">
+                          </a>
+                          <a class="me-3 confirm-text" href="javascript:void(0);">
+                             <img src="assets/img/icons/delete.svg" alt="img">
+                          </a>
+                       </td>
+                    </tr><tr class="odd">
+                       <td class="sorting_1">
+                          <label class="checkboxs">
+                             <input type="checkbox">
+                             <span class="checkmarks"></span>
+                          </label>
+                       </td>
+                       <td class="productimgname">
+                          <a href="javascript:void(0);" class="product-img">
+                             <img src="assets/img/customer/customer5.jpg" alt="product">
+                          </a>
+                       </td>
+                       <td>Franklin</td>
+                       <td>Jacob </td>
+                       <td>BeverlyWIN25</td>
+                       <td>+12163547758 </td>
+                       <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aceec9dac9dec0d5ecc9d4cdc1dcc0c982cfc3c1">[email&nbsp;protected]</a></td>
+                       <td>
+                          <div class="status-toggle d-flex justify-content-between align-items-center">
+                             <input type="checkbox" id="user5" class="check">
+                             <label for="user5" class="checktoggle">checkbox</label>
+                          </div>
+                       </td>
+                       <td>
+                          <a class="me-3" href="edituser.html">
+                             <img src="assets/img/icons/edit.svg" alt="img">
+                          </a>
+                          <a class="me-3 confirm-text" href="javascript:void(0);">
+                             <img src="assets/img/icons/delete.svg" alt="img">
+                          </a>
+                       </td>
+                    </tr><tr class="even">
+                       <td class="sorting_1">
+                          <label class="checkboxs">
+                             <input type="checkbox">
+                             <span class="checkmarks"></span>
+                          </label>
+                       </td>
+                       <td class="productimgname">
+                          <a href="javascript:void(0);" class="product-img">
+                             <img src="assets/img/customer/customer6.jpg" alt="product">
+                          </a>
+                       </td>
+                       <td>B. Huber	</td>
+                       <td>Jacob </td>
+                       <td>BeverlyWIN25</td>
+                       <td>+12163547758 </td>
+                       <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7b330e191e093b1e031a160b171e55181416">[email&nbsp;protected]</a></td>
+                       <td>
+                          <div class="status-toggle d-flex justify-content-between align-items-center">
+                             <input type="checkbox" id="user6" class="check">
+                             <label for="user6" class="checktoggle">checkbox</label>
+                          </div>
+                       </td>
+                       <td>
+                          <a class="me-3" href="edituser.html">
+                             <img src="assets/img/icons/edit.svg" alt="img">
+                          </a>
+                          <a class="me-3 confirm-text" href="javascript:void(0);">
+                             <img src="assets/img/icons/delete.svg" alt="img">
+                          </a>
+                       </td>
+                    </tr><tr class="odd">
+                       <td class="sorting_1">
+                          <label class="checkboxs">
+                             <input type="checkbox">
+                             <span class="checkmarks"></span>
+                          </label>
+                       </td>
+                       <td class="productimgname">
+                          <a href="javascript:void(0);" class="product-img">
+                             <img src="assets/img/customer/customer7.jpg" alt="product">
+                          </a>
+                       </td>
+                       <td>Alwin</td>
+                       <td>Alwin </td>
+                       <td>Alwin243</td>
+                       <td>+12163547758 </td>
+                       <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0764727473686a627547627f666a776b622964686a">[email&nbsp;protected]</a></td>
+                       <td>
+                          <div class="status-toggle d-flex justify-content-between align-items-center">
+                             <input type="checkbox" id="user7" class="check">
+                             <label for="user7" class="checktoggle">checkbox</label>
+                          </div>
+                       </td>
+                       <td>
+
+                          <a class="me-3" href="edituser.html">
+                             <img src="assets/img/icons/edit.svg" alt="img">
+                          </a>
+                          <a class="me-3 confirm-text" href="javascript:void(0);">
+                             <img src="assets/img/icons/delete.svg" alt="img">
+                          </a>
+                       </td>
+                    </tr><tr class="even">
+                       <td class="sorting_1">
+                          <label class="checkboxs">
+                             <input type="checkbox">
+                             <span class="checkmarks"></span>
+                          </label>
+                       </td>
+                       <td class="productimgname">
+                          <a href="javascript:void(0);" class="product-img">
+                             <img src="assets/img/customer/customer8.jpg" alt="product">
+                          </a>
+                       </td>
+                       <td>Fred john</td>
+                       <td>john </td>
+                       <td>FredJ25</td>
+                       <td>+12163547758 </td>
+                       <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bad0d5d2d4fadfc2dbd7cad6df94d9d5d7">[email&nbsp;protected]</a></td>
+                       <td>
+                          <div class="status-toggle d-flex justify-content-between align-items-center">
+                             <input type="checkbox" id="user15" class="check">
+                             <label for="user15" class="checktoggle">checkbox</label>
+                          </div>
+                       </td>
+                       <td>
+                          <a class="me-3" href="edituser.html">
+                             <img src="assets/img/icons/edit.svg" alt="img">
+                          </a>
+                          <a class="me-3 confirm-text" href="javascript:void(0);">
+                             <img src="assets/img/icons/delete.svg" alt="img">
+                          </a>
+                       </td>
+                    </tr><tr class="odd">
+                       <td class="sorting_1">
+                          <label class="checkboxs">
+                             <input type="checkbox">
+                             <span class="checkmarks"></span>
+                          </label>
+                       </td>
+                       <td class="productimgname">
+                          <a href="javascript:void(0);" class="product-img">
+                             <img src="assets/img/customer/customer1.jpg" alt="product">
+                          </a>
+                       </td>
+                       <td>Rasmussen	</td>
+                       <td>Gothic </td>
+                       <td>Cras56</td>
+                       <td>+12163547758 </td>
+                       <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3a685b49574f49495f547a5f425b574a565f14595557">[email&nbsp;protected]</a></td>
+                       <td>
+                          <div class="status-toggle d-flex justify-content-between align-items-center">
+                             <input type="checkbox" id="user9" class="check" checked="">
+                             <label for="user9" class="checktoggle">checkbox</label>
+                          </div>
+                       </td>
+                       <td>
+                          <a class="me-3" href="edituser.html">
+                             <img src="assets/img/icons/edit.svg" alt="img">
+                          </a>
+                          <a class="me-3 confirm-text" href="javascript:void(0);">
+                             <img src="assets/img/icons/delete.svg" alt="img">
+                          </a>
+                       </td>
+                    </tr><tr class="even">
+                       <td class="sorting_1">
+                          <label class="checkboxs">
+                             <input type="checkbox">
+                             <span class="checkmarks"></span>
+                          </label>
+                       </td>
+                       <td class="productimgname">
+                          <a href="javascript:void(0);" class="product-img">
+                             <img src="assets/img/customer/customer2.jpg" alt="product">
+                          </a>
+                       </td>
+                       <td>Grace	</td>
+                       <td>Halena </td>
+                       <td>Grace2022</td>
+                       <td>+12163547758 </td>
+                       <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a0c3d5d3d4cfcdc5d2e0c5d8c1cdd0ccc58ec3cfcd">[email&nbsp;protected]</a></td>
+                       <td>
+                          <div class="status-toggle d-flex justify-content-between align-items-center">
+                             <input type="checkbox" id="user10" class="check" checked="">
+                             <label for="user10" class="checktoggle">checkbox</label>
+                          </div>
+                       </td>
+                       <td>
+                          <a class="me-3" href="edituser.html">
+                             <img src="assets/img/icons/edit.svg" alt="img">
+                          </a>
+                          <a class="me-3 confirm-text" href="javascript:void(0);">
+                             <img src="assets/img/icons/delete.svg" alt="img">
+                          </a>
+                       </td>
+                    </tr></tbody>
+                 </table><div class="dataTables_length" id="DataTables_Table_0_length"><label><select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label></div><div class="dataTables_paginate paging_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">2</a></li></ul></div><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">1 - 10 of 12 items</div></div>
+              </div>
+           </div>
+        </div>
+
+     </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+spring:
+  # Jpa/hibernate
+  jpa:
+    hibernate:
+
+      ddl-auto: none #chay 1 lan roi de none
+
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+        generate-ddl: true
+  #        show-sql: true
+  #        connection:
+
+  # Data source: Sql server
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost:1433;databaseName=DUANTOTNGHIEP;encrypt=false;trustServerCertificate=true;
+    username: sa
+    password: 123
+
+  # MVC Config
+  mvc:
+    view:
+      prefix: /template/
+      suffix: .html
+
+    static-path-pattern: /static/**
+    web:
+      resources:
+        static-locations: classpath:/static/
+
+  # Thymeleaf Config
+  thymeleaf:
+    cache: false
+
+# Config logging
+logging:
+  level:
+    #    ROOT: INFO
+    #    com.xshop: DEBUG
+    org.hibernate.SQL: DEBUG
+    #    com.zaxxer.hikari.HikariConfig: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+    #security logging
+    org:
+      springframework:
+        security: TRACE
+
+#debug: true
+
+# JWT Config
+app:
+  jwt-secret: daf66e01593f61a15b857cf433aae03a005812b31234e149036bcc8dee755dbb
+  jwt-expiration-milliseconds: 604800000

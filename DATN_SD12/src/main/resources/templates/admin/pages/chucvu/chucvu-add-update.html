@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/layout}">
+<head>
+   <meta charset="UTF-8">
+   <title>Title</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div layout:fragment="content">
+   <div class="content">
+      <div class="page-header">
+         <div class="page-title">
+            <h4>Chức Vụ</h4>
+            <h6>Thêm chức vụ </h6>
+         </div>
+      </div>
+
+
+      <form id="myForm" th:object="${chucVu}"
+            th:action="${chucVu.id != null ? '/admin/chucvu/update/' + chucVu.id : '/admin/chucvu/create'}"
+            method="post" >
+      <div class="card">
+         <div class="card-body">
+            <div class="row">
+                <div th:if="${errorMessage}" class="error-message">
+                    <p th:text="${errorMessage}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="ma">Mã:</label>
+                    <input type="text" id="ma" name="ma" th:field="*{ma}" >
+                    <span id="maError" class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="ten">Tên:</label>
+                    <input type="text" id="ten" name="ten" th:field="*{ten}" >
+                    <span id="tenError" class="error-message"></span>
+                </div>
+
+
+               <div class="col-lg-12">
+                  <button type="submit" class="btn btn-submit me-2">Lưu</button>
+                  <a th:href="@{'/admin/chucvu/list'}" class="btn btn-cancel">Cancel</a>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      </form>
+
+       <script>
+           document.getElementById("myForm").addEventListener("submit", function (event) {
+               var maValue = document.getElementById("ma").value;
+               var tenValue = document.getElementById("ten").value;
+               var maError = document.getElementById("maError");
+               var tenError = document.getElementById("tenError");
+
+               // Kiểm tra trống mã và trống tên
+               if (!maValue.trim()) {
+                   event.preventDefault();
+                   maError.textContent = "Vui lòng nhập mã!";
+               } else {
+                   maError.textContent = "";
+               }
+
+               if (!tenValue.trim()) {
+                   event.preventDefault();
+                   tenError.textContent = "Vui lòng nhập tên!";
+               } else {
+                   tenError.textContent = "";
+               }
+
+               // Kiểm tra ký tự đặc biệt trong tên
+               if (hasSpecialCharacters(tenValue)) {
+                   event.preventDefault();
+                   tenError.textContent = "Tên không được chứa ký tự đặc biệt!";
+               }
+
+               // Kiểm tra trùng mã
+               if (hasSpecialCharacters(maValue)) {
+                   event.preventDefault();
+                   maError.textContent = "Mã không được chứa ký tự đặc biệt!";
+               }
+           });
+
+           function hasSpecialCharacters(text) {
+               var regex = /[!@#$%^&*(),.?":{}|<>]/;
+               return regex.test(text);
+           }
+       </script>
+
+
+   </div>
+</div>
+
+
+</body>
+</html>

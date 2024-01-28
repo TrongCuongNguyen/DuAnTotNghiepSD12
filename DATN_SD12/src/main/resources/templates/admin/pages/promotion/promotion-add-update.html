@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="content">
+        <div class="page-header">
+            <div class="page-title">
+                <h4>ADD Khuyến mại</h4>
+                <h6>Edit a Promotion</h6>
+            </div>
+        </div>
+
+
+        <form th:object="${khuyenMai}"
+              th:action="${ khuyenMai.id != null ? '/admin/promotion/updatePromotion/' + khuyenMai.id : '/admin/promotion/addPromotion'}"
+              method="post" class="container mt-5">
+
+            <div class="form-group">
+                <label for="ten">Tên :</label>
+                <input type="text" id="ten" th:field="*{ten}" class="form-control" th:errorclass="is-invalid" required>
+                <span th:if="${#fields.hasErrors('ten')}" th:errors="*{ten}" class="invalid-feedback"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="ngayBatDau">Ngày bắt đầu :</label>
+                <input type="text" id="ngayBatDau" th:field="*{ngayBatDau}" class="form-control"
+                       th:errorclass="is-invalid" required>
+                <span th:if="${#fields.hasErrors('ngayBatDau')}" th:errors="*{ngayBatDau}"
+                      class="invalid-feedback"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="ngayKetThuc">Ngày kết thúc :</label>
+                <input type="text" id="ngayKetThuc" th:field="*{ngayKetThuc}" class="form-control"
+                       th:errorclass="is-invalid" required>
+                <span th:if="${#fields.hasErrors('ngayKetThuc')}" th:errors="*{ngayKetThuc}"
+                      class="invalid-feedback"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="trangThai">Trạng thái :</label>
+                <select id="trangThai" th:field="*{trangThai}" class="form-control" th:errorclass="is-invalid" required>
+                    <option value="1">1</option>
+                    <option value="0">0</option>
+                </select>
+                <span th:if="${#fields.hasErrors('trangThai')}" th:errors="*{trangThai}"
+                      class="invalid-feedback"></span>
+            </div>
+
+
+            <button type="submit">Lưu</button>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>

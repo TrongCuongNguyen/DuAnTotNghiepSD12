@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/layout}">
+<head>
+   <meta charset="UTF-8">
+   <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+   <div class="content">
+      <div class="page-header">
+         <div class="page-title">
+            <h4>ADD Sản Phẩm</h4>
+            <h6>Edit a Product</h6>
+         </div>
+      </div>
+
+
+      <form th:object="${sanPham}"
+            th:action="${sanPham.id != null ? '/admin/product/updateProduct/' + sanPham.id : '/admin/product/addProduct'}"
+            method="post" class="container mt-5">
+
+         <div class="form-group">
+            <label for="ten">Tên Sản Phẩm :</label>
+            <input type="text" id="ten" th:field="*{ten}" class="form-control" th:errorclass="is-invalid" required>
+            <span th:if="${#fields.hasErrors('ten')}" th:errors="*{ten}" class="invalid-feedback"></span>
+         </div>
+
+         <div class="form-group">
+            <label for="moTa">Mô tả :</label>
+            <input type="text" id="moTa" th:field="*{moTa}" class="form-control" th:errorclass="is-invalid" required>
+            <span th:if="${#fields.hasErrors('moTa')}" th:errors="*{moTa}" class="invalid-feedback"></span>
+         </div>
+
+
+         <div class="form-group">
+            <label for="trangThai">Trạng thái :</label>
+            <select id="trangThai" th:field="*{trangThai}" class="form-control" th:errorclass="is-invalid" required>
+               <option value="1">1</option>
+               <option value="0">0</option>
+            </select>
+            <span th:if="${#fields.hasErrors('trangThai')}" th:errors="*{trangThai}"
+                  class="invalid-feedback"></span>
+         </div>
+
+         <div class="form-group">
+            <label for="danhMucSanPham">Chọn Danh Mục Sản Phẩm :</label>
+            <select id="danhMucSanPham" name="danhMucSanPham.id" th:field="*{danhMucSanPham.id}" class="form-control" >
+               <option value="danhMucSanPham"> Chọn Danh Mục</option>
+               <option th:each="danhMucSanPham : ${danhMucSanPhamList}" th:value="${danhMucSanPham.id}" th:text="${danhMucSanPham.ten}"
+                       th:selected="${danhMucSanPham.id == (sanPham.danhMucSanPham != null ? sanPham.danhMucSanPham.id : null)}"></option>
+            </select>
+         </div>
+
+         <div class="form-group">
+            <label for="thuongHieu">Chọn Thương Hiệu :</label>
+            <select id="thuongHieu" name="thuongHieu.id" th:field="*{thuongHieu.id}" class="form-control" >
+               <option value="thuongHieu"> Chọn Thương Hiệu</option>
+               <option th:each="thuongHieu : ${thuongHieuList}" th:value="${thuongHieu.id}" th:text="${thuongHieu.ten}"
+                       th:selected="${thuongHieu.id == (sanPham.thuongHieu != null ? sanPham.thuongHieu.id : null)}"></option>
+            </select>
+         </div>
+
+         <div class="form-group">
+            <label for="hinhNen">Hình Nền :</label>
+            <input type="text" id="hinhNen" th:field="*{hinhNen}" class="form-control" th:errorclass="is-invalid" required>
+            <span th:if="${#fields.hasErrors('hinhNen')}" th:errors="*{hinhNen}" class="invalid-feedback"></span>
+         </div>
+
+         <button type="submit">Lưu</button>
+      </form>
+
+   </div>
+</div>
+</body>
+</html>

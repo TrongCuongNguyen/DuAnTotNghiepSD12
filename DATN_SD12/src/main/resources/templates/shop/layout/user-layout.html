@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport"
+         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!--   <link rel="shortcut icon" type="image/png" th:href="@{~/static/assets/shop/css/img/logo_XShop.ico}">-->
+   <title>Main Layout</title>
+
+   <link th:href="@{~/static/assets/shop/css/styles.css}" rel="stylesheet">
+<!--   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>-->
+</head>
+<body>
+<div class="preloader"></div>
+<div id="main-wrapper">
+   <div th:replace="~{/shop/fragments/header::header}"></div>
+   <div class="clearfix"></div>
+   <!-- ======================= Top Breadcrubms ======================== -->
+   <div class="gray py-3">
+      <div class="container">
+         <div class="row">
+            <div class="colxl-12 col-lg-12 col-md-12">
+               <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                     <li class="breadcrumb-item"><a href="#">Home</a></li>
+                     <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                     <li class="breadcrumb-item active" aria-current="page">Profile Info</li>
+                  </ol>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- ======================= Top Breadcrubms ======================== -->
+   <section class="middle">
+      <div class="container">
+         <div class="row align-items-start justify-content-between">
+            <div th:replace="~{shop/fragments/user-sidebar::user-sidebar}">User Setting Sidebar</div>
+            <div class="col-12 col-md-12 col-lg-8 col-xl-8" layout:fragment="content">User Setting Content</div><!-- Chi thay the noi dung ben trong, khong thay the ca the div nhu th:replace-->
+         </div>
+      </div>
+   </section>
+   <div th:replace="~{shop/fragments/customer-feature::customer-feature}"></div>
+   <div th:replace="~{shop/fragments/footer::footer}"></div>
+
+
+   <div th:replace="~{shop/fragments/card-modal::cart}"></div>
+   <div th:replace="~{shop/fragments/search-modal::search}"></div>
+   <div th:replace="~{shop/fragments/quick-view-modal::quickView}"></div>
+   <div th:replace="~{shop/fragments/wishlist-modal::wishList}"></div>
+
+   <a id="back2Top" class="top-scroll rounded" title="Back to top" href="#">
+      <i class="fi fi-rr-chevron-double-up"></i>
+   </a>
+
+</div>
+
+</body>
+
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script th:src="@{~/static/assets/shop/js/jquery.min.js}"></script>
+<script th:src="@{~/static/assets/shop/js/popper.min.js}"></script>
+<script th:src="@{~/static/assets/shop/js/bootstrap.min.js}"></script>
+<script th:src="@{~/static/assets/shop/js/ion.rangeSlider.min.js}"></script>
+<script th:src="@{~/static/assets/shop/js/slick.js}"></script>
+<script th:src="@{~/static/assets/shop/js/slider-bg.js}"></script>
+<script th:src="@{~/static/assets/shop/js/lightbox.js}"></script>
+<script th:src="@{~/static/assets/shop/js/smoothproducts.js}"></script>
+<script th:src="@{~/static/assets/shop/js/snackbar.min.js}"></script>
+<script th:src="@{~/static/assets/shop/js/jQuery.style.switcher.js}"></script>
+<script th:src="@{~/static/assets/shop/js/custom.js}"></script>
+<!-- ============================================================== -->
+<!-- This page plugins -->
+<!-- ============================================================== -->
+
+<script>
+    function openWishlist() {
+        document.getElementById("Wishlist").style.display = "block";
+    }
+    function closeWishlist() {
+        document.getElementById("Wishlist").style.display = "none";
+    }
+</script>
+
+<script>
+    function openCart() {
+        document.getElementById("Cart").style.display = "block";
+    }
+    function closeCart() {
+        document.getElementById("Cart").style.display = "none";
+    }
+</script>
+
+<script>
+    function openSearch() {
+        document.getElementById("Search").style.display = "block";
+    }
+    function closeSearch() {
+        document.getElementById("Search").style.display = "none";
+    }
+</script>
+</html>
